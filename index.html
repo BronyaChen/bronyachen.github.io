@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>经营平台 - 营销洞察</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- 顶部导航 -->
+        <header class="top-nav">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>经营平台</span>
+            </div>
+            <nav class="top-menu">
+                <a href="#" class="top-menu-item">
+                    <i class="fas fa-calendar-day"></i>
+                    <span>今日经营台</span>
+                </a>
+                <a href="#" class="top-menu-item">
+                    <i class="fas fa-video"></i>
+                    <span>直播经营</span>
+                </a>
+                <a href="#" class="top-menu-item">
+                    <i class="fas fa-comments"></i>
+                    <span>咨询经营</span>
+                </a>
+                <a href="#" class="top-menu-item">
+                    <i class="fas fa-link"></i>
+                    <span>线索经营</span>
+                </a>
+                <a href="#" class="top-menu-item active">
+                    <i class="fas fa-building"></i>
+                    <span>企微经营</span>
+                </a>
+                <a href="#" class="top-menu-item">
+                    <i class="fas fa-store"></i>
+                    <span>小店经营</span>
+                </a>
+                <a href="#" class="top-menu-item">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>经营分析</span>
+                </a>
+                <a href="#" class="top-menu-item">
+                    <i class="fas fa-user-tie"></i>
+                    <span>经营顾问</span>
+                </a>
+                <a href="#" class="top-menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>管理</span>
+                </a>
+            </nav>
+            <div class="top-actions">
+                <button class="btn-recommend">
+                    <i class="fas fa-wand-magic-sparkles"></i>
+                    经营工具推荐
+                </button>
+                <div class="user-info">
+                    <i class="fas fa-bell"></i>
+                    <div class="avatar">A</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <!-- 左侧导航 -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <span>营销辅助</span>
+                </div>
+                <nav class="sidebar-menu">
+                    <a href="#" class="sidebar-item active">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>营销洞察</span>
+                        <span class="badge">P0</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-users"></i>
+                        <span>人群包应用</span>
+                        <span class="badge">P1</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-image"></i>
+                        <span>素材管理</span>
+                        <span class="badge">P0</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-book"></i>
+                        <span>企业知识库</span>
+                    </a>
+                    <div class="sidebar-divider">客户管理</div>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-layer-group"></i>
+                        <span>客户分层运营</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-id-card"></i>
+                        <span>客户画像</span>
+                        <span class="badge">P0</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-comment-dots"></i>
+                        <span>客户反馈</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-list"></i>
+                        <span>客户列表</span>
+                        <span class="badge">P0</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-star"></i>
+                        <span>员工表现评估</span>
+                    </a>
+                    <div class="sidebar-divider">会话管理</div>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-eye"></i>
+                        <span>会话查看</span>
+                        <span class="badge">P1</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-clipboard-check"></i>
+                        <span>会话质检</span>
+                    </a>
+                </nav>
+                <div class="sidebar-footer">
+                    Powered By 腾讯云
+                </div>
+            </aside>
+
+            <!-- 主内容区 -->
+            <main class="content">
+                <!-- 面包屑和筛选 -->
+                <div class="content-header">
+                    <div class="breadcrumb">
+                        <span>企微经营</span>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>营销辅助</span>
+                        <i class="fas fa-chevron-right"></i>
+                        <span class="current">营销洞察</span>
+                    </div>
+                    <div class="header-actions">
+                        <div class="date-filter">
+                            <button class="date-btn" data-range="yesterday">昨日</button>
+                            <button class="date-btn active" data-range="7days">近7天</button>
+                            <button class="date-btn" data-range="30days">近30天</button>
+                            <div class="date-picker">
+                                <i class="fas fa-calendar"></i>
+                                <span>2025-07-01 ~ 2025-07-07</span>
+                            </div>
+                            <div class="industry-select">
+                                <span>行业: 商家</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="data-source">
+                            <span>数据来源</span>
+                            <button class="btn-refresh">
+                                <i class="fas fa-sync-alt"></i>
+                                刷新数据
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI 洞察 -->
+                <section class="ai-insights">
+                    <div class="section-title">
+                        <i class="fas fa-robot"></i>
+                        <span>AI 洞察</span>
+                        <span class="subtitle">基于近 7 天投放数据自动生成</span>
+                    </div>
+                    <div class="insights-grid">
+                        <div class="insight-card positive">
+                            <div class="insight-header">
+                                <span class="insight-tag tag-positive">机会</span>
+                                <span class="insight-title">朋友圈版位 CTR 领先，加粉成本最优</span>
+                            </div>
+                            <p class="insight-desc">朋友圈 CTR 8.0%，高于均值 7.0%。建议对该版位追加预算，尤其真人出镜素材表现突出。</p>
+                        </div>
+                        <div class="insight-card warning">
+                            <div class="insight-header">
+                                <span class="insight-tag tag-warning">关注</span>
+                                <span class="insight-title">开口→留资环节转化率偏低</span>
+                            </div>
+                            <p class="insight-desc">整体留资率 40%，但「优惠汇」版位仅 34.2%。建议优化该渠道话术引导策略或调整人群定向。</p>
+                        </div>
+                        <div class="insight-card negative">
+                            <div class="insight-header">
+                                <span class="insight-tag tag-negative">预警</span>
+                                <span class="insight-title">到店率环比下降 2.1pp</span>
+                            </div>
+                            <p class="insight-desc">留资→到店转化链路断裂，到店率环比下降 17.4%。建议排查留资后跟进时效，启用 SOP 自动提醒。</p>
+                        </div>
+                        <div class="insight-card positive">
+                            <div class="insight-header">
+                                <span class="insight-tag tag-positive">机会</span>
+                                <span class="insight-title">TOP3 营销单元贡献 55% 加粉量</span>
+                            </div>
+                            <p class="insight-desc">头部营销单元转化效率显著领先，建议复制其素材策略至中低效营销单元，提升整体 ROI。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 核心指标 -->
+                <section class="core-metrics">
+                    <div class="section-title">核心指标</div>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">总花费</div>
+                            <div class="metric-value">¥128,500</div>
+                            <div class="metric-trend trend-up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>较上周 +12.3%</span>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">曝光成本</div>
+                            <div class="metric-value">¥45.6</div>
+                            <div class="metric-trend trend-up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>较上周 +3.2%</span>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">点击成本</div>
+                            <div class="metric-value">¥2.8</div>
+                            <div class="metric-trend trend-down">
+                                <i class="fas fa-arrow-down"></i>
+                                <span>较上周 -5.1%</span>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">加粉成本</div>
+                            <div class="metric-value">¥12.8</div>
+                            <div class="metric-trend trend-down">
+                                <i class="fas fa-arrow-down"></i>
+                                <span>较上周 -8.6%</span>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">开口成本</div>
+                            <div class="metric-value">¥30.5</div>
+                            <div class="metric-trend trend-down">
+                                <i class="fas fa-arrow-down"></i>
+                                <span>较上周 -3.2%</span>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">整体 ROI</div>
+                            <div class="metric-value">3.2x</div>
+                            <div class="metric-trend trend-up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>较上周 +0.3</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 营销转化漏斗 -->
+                <section class="funnel-section" id="funnel-section">
+                    <div class="funnel-header">
+                        <div class="funnel-header-left">
+                            <div class="section-title">营销转化漏斗</div>
+                            <div class="funnel-summary">
+                                <span class="funnel-summary-item">
+                                    整体转化率
+                                    <strong id="overall-conversion-rate">45.65%</strong>
+                                    <button class="conversion-config-btn" id="conversion-config-btn" title="配置转化率计算方式">
+                                        <i class="fas fa-cog"></i>
+                                    </button>
+                                </span>
+                                <span class="trend-badge up" id="overall-trend-badge">↑ 环比31.00%</span>
+                                <span class="funnel-info" id="funnel-industry-info">行业: 本地生活 | 时间范围: 2025-06-18 至 2025-06-24</span>
+                            </div>
+                        </div>
+                        <div class="funnel-header-right">
+                            <div class="entity-selector" id="entity-selector">
+                                <div class="entity-selector-trigger" id="entity-selector-trigger">
+                                    <i class="fas fa-building"></i>
+                                    <span id="entity-selector-label">华南分公司</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="entity-selector-dropdown" id="entity-selector-dropdown">
+                                    <div class="entity-dropdown-header">
+                                        <span>选择查看主体</span>
+                                        <span class="entity-hint">相同行业可多选合并</span>
+                                    </div>
+                                    <div class="entity-dropdown-list" id="entity-dropdown-list">
+                                        <!-- JS 动态生成 -->
+                                    </div>
+                                    <div class="entity-dropdown-footer">
+                                        <button class="entity-btn entity-btn-cancel" id="entity-cancel-btn">取消</button>
+                                        <button class="entity-btn entity-btn-confirm" id="entity-confirm-btn">确定</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 转化率配置弹窗 -->
+                    <div class="conversion-config-modal" id="conversion-config-modal">
+                        <div class="conversion-config-content">
+                            <div class="conversion-config-title">
+                                <span>配置整体转化率计算方式</span>
+                                <button class="conversion-config-close" id="conversion-config-close"><i class="fas fa-times"></i></button>
+                            </div>
+                            <div class="conversion-config-body">
+                                <div class="conversion-config-row">
+                                    <label>分子</label>
+                                    <select id="conversion-numerator" class="conversion-select">
+                                        <option value="下单">下单数</option>
+                                        <option value="到店">到店数</option>
+                                        <option value="留资">留资数</option>
+                                        <option value="开口">开口数</option>
+                                        <option value="加粉">加粉数</option>
+                                    </select>
+                                </div>
+                                <div class="conversion-config-row">
+                                    <label>分母</label>
+                                    <select id="conversion-denominator" class="conversion-select">
+                                        <option value="点击" selected>点击数</option>
+                                        <option value="曝光">曝光数</option>
+                                        <option value="加粉">加粉数</option>
+                                        <option value="开口">开口数</option>
+                                        <option value="留资">留资数</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="conversion-config-footer">
+                                <button class="entity-btn entity-btn-cancel" id="conversion-cancel-btn">取消</button>
+                                <button class="entity-btn entity-btn-confirm" id="conversion-confirm-btn">确定</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 漏斗图区域 -->
+                    <div class="funnel-body">
+                        <div class="funnel-main-area" id="funnel-main-area">
+                            <!-- 客户漏斗图 -->
+                            <div class="funnel-customer funnel-panel" id="funnel-customer">
+                                <div class="funnel-panel-label">
+                                    <span class="label-dot customer-dot"></span>
+                                    <span>客户漏斗</span>
+                                </div>
+                                <div class="funnel-chart" id="customer-funnel-chart">
+                                    <!-- JS 动态生成 -->
+                                </div>
+                            </div>
+                            <!-- 行业漏斗图 -->
+                            <div class="funnel-industry funnel-panel" id="funnel-industry">
+                                <div class="funnel-panel-label">
+                                    <span class="label-dot industry-dot"></span>
+                                    <span>行业漏斗</span>
+                                    <span class="industry-name" id="industry-name-label">本地生活</span>
+                                </div>
+                                <div class="funnel-chart" id="industry-funnel-chart">
+                                    <!-- JS 动态生成 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 画像区域 -->
+                    <div class="funnel-portrait" id="funnel-portrait">
+                        <div class="portrait-header">
+                            <div class="portrait-header-left">
+                                <span class="portrait-stage-label" id="portrait-stage-label">下单客户画像</span>
+                                <span class="portrait-count" id="portrait-count">共 800 人</span>
+                            </div>
+                            <div class="portrait-config" id="portrait-config">
+                                <button class="portrait-config-btn" id="portrait-config-trigger" title="配置画像展示维度">
+                                    <i class="fas fa-sliders-h"></i>
+                                    <span>画像配置</span>
+                                </button>
+                                <div class="portrait-config-dropdown" id="portrait-config-dropdown">
+                                    <div class="portrait-config-header">选择展示画像（最多4个）</div>
+                                    <div class="portrait-config-list" id="portrait-config-list">
+                                        <!-- JS 动态生成 -->
+                                    </div>
+                                    <div class="portrait-config-footer">
+                                        <button class="entity-btn entity-btn-cancel" id="portrait-cancel-btn">取消</button>
+                                        <button class="entity-btn entity-btn-confirm" id="portrait-confirm-btn">确定</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portrait-grid" id="portrait-grid">
+                            <!-- JS 动态生成 -->
+                        </div>
+                    </div>
+
+                    <!-- 行业不同报错提示 -->
+                    <div class="entity-error-toast" id="entity-error-toast">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>行业不同，无法直接相加</span>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
