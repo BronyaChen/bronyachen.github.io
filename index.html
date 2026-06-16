@@ -265,29 +265,38 @@
                         <div class="funnel-header-left">
                             <div class="section-title">营销转化漏斗</div>
                             <div class="funnel-summary">
-                                <span class="funnel-summary-item">
-                                    整体转化率
+                                <div class="funnel-summary-item">
+                                    <span>整体转化率</span>
                                     <strong id="overall-conversion-rate">45.65%</strong>
                                     <button class="conversion-config-btn" id="conversion-config-btn" title="配置转化率计算方式">
                                         <i class="fas fa-cog"></i>
                                     </button>
-                                </span>
+                                    <span class="funnel-rate-peer peer-high" id="overall-peer-badge">位于同行转化率的前60%</span>
+                                </div>
                                 <span class="trend-badge up" id="overall-trend-badge">↑ 环比31.00%</span>
-                                <span class="funnel-info" id="funnel-industry-info">行业: 本地生活 | 时间范围: 2025-06-18 至 2025-06-24</span>
+                                <span class="funnel-info" id="funnel-industry-info">时间范围: 2025-06-18 至 2025-06-24</span>
                             </div>
                         </div>
                         <div class="funnel-header-right">
                             <div class="entity-selector" id="entity-selector">
                                 <div class="entity-selector-trigger" id="entity-selector-trigger">
                                     <i class="fas fa-building"></i>
-                                    <span id="entity-selector-label">华南分公司</span>
+                                    <span id="entity-selector-label">华南分公司 + 东南分公司</span>
                                     <i class="fas fa-chevron-down"></i>
                                 </div>
                                 <div class="entity-selector-dropdown" id="entity-selector-dropdown">
                                     <div class="entity-dropdown-header">
                                         <span>选择查看主体</span>
-                                        <span class="entity-hint">相同行业可多选合并</span>
+                                        <span class="entity-hint">选择行业自动勾选对应主体</span>
                                     </div>
+                                    <div class="entity-dropdown-industry" id="entity-dropdown-industry">
+                                        <div class="entity-industry-label">行业</div>
+                                        <div class="entity-industry-options" id="entity-industry-options">
+                                            <!-- JS 动态生成 -->
+                                        </div>
+                                    </div>
+                                    <div class="entity-dropdown-divider"></div>
+                                    <div class="entity-industry-label" style="padding: 0 12px 4px;">主体</div>
                                     <div class="entity-dropdown-list" id="entity-dropdown-list">
                                         <!-- JS 动态生成 -->
                                     </div>
@@ -336,6 +345,42 @@
                         </div>
                     </div>
 
+                    <!-- 折线图转化率配置弹窗 -->
+                    <div class="conversion-config-modal" id="trend-config-modal">
+                        <div class="conversion-config-content">
+                            <div class="conversion-config-title">
+                                <span>配置趋势图转化率计算方式</span>
+                                <button class="conversion-config-close" id="trend-config-close"><i class="fas fa-times"></i></button>
+                            </div>
+                            <div class="conversion-config-body">
+                                <div class="conversion-config-row">
+                                    <label>分子</label>
+                                    <select id="trend-numerator" class="conversion-select">
+                                        <option value="下单">下单数</option>
+                                        <option value="到店">到店数</option>
+                                        <option value="留资">留资数</option>
+                                        <option value="开口">开口数</option>
+                                        <option value="加粉">加粉数</option>
+                                    </select>
+                                </div>
+                                <div class="conversion-config-row">
+                                    <label>分母</label>
+                                    <select id="trend-denominator" class="conversion-select">
+                                        <option value="曝光" selected>曝光数</option>
+                                        <option value="点击">点击数</option>
+                                        <option value="加粉">加粉数</option>
+                                        <option value="开口">开口数</option>
+                                        <option value="留资">留资数</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="conversion-config-footer">
+                                <button class="entity-btn entity-btn-cancel" id="trend-cancel-btn">取消</button>
+                                <button class="entity-btn entity-btn-confirm" id="trend-confirm-btn">确定</button>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- 漏斗图区域 -->
                     <div class="funnel-body">
                         <div class="funnel-main-area" id="funnel-main-area">
@@ -349,15 +394,26 @@
                                     <!-- JS 动态生成 -->
                                 </div>
                             </div>
-                            <!-- 行业漏斗图 -->
-                            <div class="funnel-industry funnel-panel" id="funnel-industry">
-                                <div class="funnel-panel-label">
-                                    <span class="label-dot industry-dot"></span>
-                                    <span>行业漏斗</span>
-                                    <span class="industry-name" id="industry-name-label">本地生活</span>
+                            <!-- 转化率变化趋势图 -->
+                            <div class="trend-chart-panel funnel-panel" id="trend-chart-panel">
+                                <div class="trend-chart-header">
+                                    <div class="trend-chart-title">
+                                        <span class="label-dot trend-dot"></span>
+                                        <span>转化率变化趋势图</span>
+                                        <span class="trend-rate-label" id="trend-rate-label">下单数/点击数</span>
+                                    </div>
+                                    <div class="trend-chart-controls">
+                                        <div class="trend-date-range" id="trend-date-range">
+                                            <i class="fas fa-calendar"></i>
+                                            <span id="trend-date-label">2025-05-25 ~ 2025-06-24</span>
+                                        </div>
+                                        <button class="trend-config-btn" id="trend-config-btn" title="配置转化率计算方式">
+                                            <i class="fas fa-cog"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="funnel-chart" id="industry-funnel-chart">
-                                    <!-- JS 动态生成 -->
+                                <div class="trend-chart-body" id="trend-chart-body">
+                                    <!-- JS 动态渲染 SVG 折线图 -->
                                 </div>
                             </div>
                         </div>
@@ -385,6 +441,15 @@
                                         <button class="entity-btn entity-btn-confirm" id="portrait-confirm-btn">确定</button>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="portrait-conclusion" id="portrait-conclusion">
+                            <div class="portrait-conclusion-header">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>画像结论</span>
+                            </div>
+                            <div class="portrait-conclusion-body" id="portrait-conclusion-body">
+                                <!-- JS 动态生成 -->
                             </div>
                         </div>
                         <div class="portrait-grid" id="portrait-grid">
