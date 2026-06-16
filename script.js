@@ -156,6 +156,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
+    // 同行对比数据 - 各转化率在同行中的水位排名
+    const peerBenchmarkData = {
+        huanan: [
+            { rateName: '点击率', percentile: 35 },
+            { rateName: '加粉率', percentile: 42 },
+            { rateName: '开口率', percentile: 28 },
+            { rateName: '留资率', percentile: 65 },
+            { rateName: '到店率', percentile: 55 },
+            { rateName: '下单率', percentile: 48 },
+        ],
+        dongnan: [
+            { rateName: '点击率', percentile: 40 },
+            { rateName: '加粉率', percentile: 50 },
+            { rateName: '开口率', percentile: 32 },
+            { rateName: '留资率', percentile: 60 },
+            { rateName: '到店率', percentile: 58 },
+            { rateName: '下单率', percentile: 45 },
+        ],
+        xinan: [
+            { rateName: '点击率', percentile: 52 },
+            { rateName: '加粉率', percentile: 60 },
+            { rateName: '开口率', percentile: 38 },
+            { rateName: '留资率', percentile: 70 },
+            { rateName: '签到率', percentile: 45 },
+            { rateName: '下单率', percentile: 50 },
+        ],
+    };
+
     // 画像维度配置
     const portraitDimensions = [
         { id: 'region', name: '地域', icon: 'fa-map-marker-alt' },
@@ -167,11 +195,19 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 'phone', name: '手机机型', icon: 'fa-mobile-alt' },
     ];
 
+    // 行业与主体的映射关系
+    const industryEntityMap = {
+        '本地生活': ['huanan', 'dongnan'],
+        '教育培训': ['xinan'],
+    };
+
     // ==================== 状态管理 ====================
     
     let state = {
         // 当前选中的主体
-        selectedEntities: ['huanan'],
+        selectedEntities: ['huanan', 'dongnan'],
+        // 当前选中的行业
+        selectedIndustry: '本地生活',
         // 画像展示维度 (7选4)
         selectedPortraitDims: ['region', 'gender', 'age', 'education'],
         // 临时画像维度（配置中的）
@@ -184,7 +220,15 @@ document.addEventListener('DOMContentLoaded', function() {
         conversionNumerator: '下单',
         conversionDenominator: '点击',
         // 临时主体选择
-        tempSelectedEntities: ['huanan'],
+        tempSelectedEntities: ['huanan', 'dongnan'],
+        // 临时行业选择（主体下拉卡片中）
+        tempIndustry: '本地生活',
+        // 折线图转化率配置
+        trendNumerator: '下单',
+        trendDenominator: '曝光',
+        // 折线图时间范围
+        trendStartDate: '2025-05-25',
+        trendEndDate: '2025-06-24',
     };
 
     // ==================== 工具函数 ====================
@@ -198,9 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function getCurrentIndustry() {
-        const ids = state.selectedEntities;
-        if (ids.length === 0) return null;
-        return getEntityById(ids[0]).industry;
+        return state.selectedIndustry;
     }
 
     function getStagesForIndustry(industry) {
@@ -261,6 +303,29 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         return merged;
+    }
+
+    // 获取同行对比水位百分位
+    function getPeerPercentile(rateName, entityIds) {
+        if (entityIds.length === 1) {
+            // 单主体：直接取该主体的同行对比数据
+            const data = peerBenchmarkData[entityIds[0]];
+            if (data) {
+                const item = data.find(d => d.rateName === rateName);
+                return item ? item.percentile : null;
+            }
+            return null;
+        }
+        // 多主体合并：取平均值
+        let sum = 0, count = 0;
+        entityIds.forEach(id => {
+            const data = peerBenchmarkData[id];
+            if (data) {
+                const item = data.find(d => d.rateName === rateName);
+                if (item) { sum += item.percentile; count++; }
+            }
+        });
+        return count > 0 ? Math.round(sum / count) : null;
     }
 
     // ==================== 渲染函数 ====================
@@ -335,11 +400,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 const trendDirR = rate.up ? '↑' : '↓';
                 const trendClassR = rate.up ? ' up' : ' down';
+
+                // 客户漏斗增加同行对比
+                let peerHtml = '';
+                if (isCustomer) {
+                    const percentile = getPeerPercentile(rate.name, state.selectedEntities);
+                    if (percentile !== null) {
+                        const peerClass = percentile <= 30 ? 'peer-low' : (percentile <= 60 ? 'peer-mid' : 'peer-high');
+                        peerHtml = `<span class="funnel-rate-peer ${peerClass}">位于同行${rate.name}水位的前${100 - percentile}%</span>`;
+                    }
+                }
+
                 rateDiv.innerHTML = `
                     <div class="funnel-rate-content">
                         <span class="funnel-rate-name">${rate.name}</span>
                         <span class="funnel-rate-value">${rate.value.toFixed(2)}%</span>
                         <span class="funnel-rate-trend${trendClassR}">${trendDirR} ${rate.trend.toFixed(2)}%</span>
+                        ${peerHtml}
                     </div>
                 `;
                 container.appendChild(rateDiv);
@@ -347,16 +424,168 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 渲染画像区域
+    // ==================== 折线图（转化率变化趋势） ====================
+
+    // 生成每日转化率数据
+    function generateTrendData(entityIds, numerator, denominator, startDate, endDate) {
+        const start = new Date(startDate);
+        const end = new Date(endDate);
+        const funnelData = getMergedFunnelData(entityIds);
+        const numBase = funnelData.stages.find(s => s.name === numerator);
+        const denBase = funnelData.stages.find(s => s.name === denominator);
+        if (!numBase || !denBase) return [];
+
+        const baseRate = denBase.value > 0 ? numBase.value / denBase.value : 0;
+        const points = [];
+        const cur = new Date(start);
+        let seed = entityIds.join('').length;
+        while (cur <= end) {
+            seed = (seed * 9301 + 49297) % 233280;
+            const rnd = (seed / 233280) - 0.5; // -0.5 ~ 0.5
+            const dayFactor = Math.sin((cur - start) / (end - start) * Math.PI * 2.5);
+            const noise = rnd * baseRate * 0.12;
+            const trend = dayFactor * baseRate * 0.06;
+            const rate = Math.max(0, baseRate + trend + noise);
+            const dateStr = cur.toISOString().slice(0, 10);
+            points.push({ date: dateStr, rate: parseFloat((rate * 100).toFixed(2)) });
+            cur.setDate(cur.getDate() + 1);
+        }
+        return points;
+    }
+
+    // 渲染折线图 SVG
+    function renderTrendChart() {
+        const container = document.getElementById('trend-chart-body');
+        if (!container) return;
+
+        const data = generateTrendData(
+            state.selectedEntities,
+            state.trendNumerator,
+            state.trendDenominator,
+            state.trendStartDate,
+            state.trendEndDate
+        );
+        if (data.length === 0) {
+            container.innerHTML = '<div style="color:var(--text-muted);padding:20px;text-align:center;">暂无数据</div>';
+            return;
+        }
+
+        // 更新标签
+        const rateLabel = document.getElementById('trend-rate-label');
+        if (rateLabel) {
+            rateLabel.textContent = state.trendNumerator + '数/' + state.trendDenominator + '数';
+        }
+        const dateLabel = document.getElementById('trend-date-label');
+        if (dateLabel) {
+            dateLabel.textContent = state.trendStartDate + ' ~ ' + state.trendEndDate;
+        }
+
+        const W = container.clientWidth || 460;
+        const H = Math.max(160, (container.parentElement?.clientHeight || 260) - 60);
+        const padL = 50, padR = 16, padT = 16, padB = 36;
+        const plotW = W - padL - padR;
+        const plotH = H - padT - padB;
+
+        const rates = data.map(d => d.rate);
+        const minR = Math.floor(Math.min(...rates) - 2);
+        const maxR = Math.ceil(Math.max(...rates) + 2);
+        const rangeR = maxR - minR || 1;
+
+        // 坐标转换
+        const xScale = (i) => padL + (i / (data.length - 1)) * plotW;
+        const yScale = (v) => padT + plotH - ((v - minR) / rangeR) * plotH;
+
+        // 折线路径
+        const linePath = data.map((d, i) => `${i === 0 ? 'M' : 'L'}${xScale(i).toFixed(1)},${yScale(d.rate).toFixed(1)}`).join(' ');
+
+        // 面积路径
+        const areaPath = linePath + ` L${xScale(data.length - 1).toFixed(1)},${(padT + plotH).toFixed(1)} L${xScale(0).toFixed(1)},${(padT + plotH).toFixed(1)} Z`;
+
+        // Y轴刻度
+        const yTicks = 5;
+        let yTickHtml = '';
+        for (let i = 0; i <= yTicks; i++) {
+            const val = minR + (rangeR * i / yTicks);
+            const y = yScale(val);
+            yTickHtml += `<line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="#f0f0f0" stroke-width="1"/>`;
+            yTickHtml += `<text x="${padL - 6}" y="${y + 4}" text-anchor="end" fill="#9ca3af" font-size="10">${val.toFixed(1)}%</text>`;
+        }
+
+        // X轴日期标签（间隔显示）
+        const xLabelInterval = Math.max(1, Math.floor(data.length / 6));
+        let xTickHtml = '';
+        data.forEach((d, i) => {
+            if (i % xLabelInterval === 0 || i === data.length - 1) {
+                const x = xScale(i);
+                const label = d.date.slice(5); // MM-DD
+                xTickHtml += `<text x="${x}" y="${H - padB + 16}" text-anchor="middle" fill="#9ca3af" font-size="9">${label}</text>`;
+            }
+        });
+
+        // 数据点
+        let dotsHtml = data.map((d, i) => 
+            `<circle cx="${xScale(i).toFixed(1)}" cy="${yScale(d.rate).toFixed(1)}" r="3" fill="#2563eb" stroke="white" stroke-width="1.5" class="trend-dot" data-date="${d.date}" data-rate="${d.rate}"/>`
+        ).join('');
+
+        const svg = `
+            <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" class="trend-svg">
+                <defs>
+                    <linearGradient id="trendAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2"/>
+                        <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.02"/>
+                    </linearGradient>
+                </defs>
+                ${yTickHtml}
+                ${xTickHtml}
+                <path d="${areaPath}" fill="url(#trendAreaGrad)"/>
+                <path d="${linePath}" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                ${dotsHtml}
+            </svg>
+        `;
+        container.innerHTML = svg;
+
+        // 添加 tooltip
+        container.querySelectorAll('.trend-dot').forEach(dot => {
+            dot.addEventListener('mouseenter', function(e) {
+                const date = this.dataset.date;
+                const rate = this.dataset.rate;
+                showTrendTooltip(e, date, rate);
+            });
+            dot.addEventListener('mouseleave', function() {
+                hideTrendTooltip();
+            });
+        });
+    }
+
+    function showTrendTooltip(e, date, rate) {
+        hideTrendTooltip();
+        const tip = document.createElement('div');
+        tip.className = 'trend-tooltip';
+        tip.id = 'trend-tooltip';
+        tip.innerHTML = `<div class="trend-tooltip-date">${date}</div><div class="trend-tooltip-rate">${rate}%</div>`;
+        document.body.appendChild(tip);
+        const rect = e.target.getBoundingClientRect();
+        tip.style.left = (rect.left + rect.width / 2 - tip.offsetWidth / 2) + 'px';
+        tip.style.top = (rect.top - tip.offsetHeight - 8) + 'px';
+    }
+
+    function hideTrendTooltip() {
+        const existing = document.getElementById('trend-tooltip');
+        if (existing) existing.remove();
+    }
+
+    // ==================== 画像渲染 ====================
     function renderPortrait(stageName, data) {
         const grid = document.getElementById('portrait-grid');
         const label = document.getElementById('portrait-stage-label');
         const count = document.getElementById('portrait-count');
+        const conclusionBody = document.getElementById('portrait-conclusion-body');
         if (!grid || !data) return;
 
         const stageData = data.portraits ? data.portraits[stageName] : null;
         if (!stageData) {
             grid.innerHTML = '<div style="color:var(--text-muted);padding:20px;">暂无画像数据</div>';
+            if (conclusionBody) conclusionBody.innerHTML = '';
             return;
         }
 
@@ -366,6 +595,41 @@ document.addEventListener('DOMContentLoaded', function() {
         const funnelData = getMergedFunnelData(state.selectedEntities);
         const stage = funnelData.stages.find(s => s.name === stageName);
         count.textContent = stage ? `共 ${formatNumber(stage.value)} 人` : '';
+
+        // ==================== 生成画像结论 ====================
+        if (conclusionBody) {
+            // 从所有维度中收集 (特征名, 百分比, 维度名) 并按百分比排序取 TOP3
+            const allFeatures = [];
+            const dimNames = { region: '地域', gender: '性别', age: '年龄', education: '学历', marriage: '婚育', consumption: '消费能力', phone: '手机品牌' };
+            const dimKeys = ['region', 'gender', 'age', 'education', 'marriage', 'consumption', 'phone'];
+            dimKeys.forEach(dimId => {
+                const items = stageData[dimId];
+                if (!items) return;
+                // 只取每个维度的第一项（最高占比）
+                const top = items[0];
+                if (top) {
+                    allFeatures.push({
+                        name: top.n,
+                        pct: top.p,
+                        dimId: dimId,
+                        dimName: dimNames[dimId] || dimId
+                    });
+                }
+            });
+            // 按百分比降序排序
+            allFeatures.sort((a, b) => b.pct - a.pct);
+            const top3 = allFeatures.slice(0, 3);
+
+            // 生成重合度（模拟数据，基于 TOP1 占比推算）
+            const overlapPct = Math.min(95, Math.round(top3[0]?.pct * 2.1 + 12 + Math.random() * 5));
+
+            if (top3.length >= 3) {
+                conclusionBody.innerHTML = `当前下单TOP3人群特征是：<span class="conclusion-tag">${top3[0].name}</span>（占<span class="conclusion-pct">${top3[0].pct}%</span>）、<span class="conclusion-tag">${top3[1].name}</span>（占<span class="conclusion-pct">${top3[1].pct}%</span>）、<span class="conclusion-tag">${top3[2].name}</span>（占<span class="conclusion-pct">${top3[2].pct}%</span>），和您历史投放产品的受众人群重合度为<span class="conclusion-overlap">${overlapPct}%</span>，投放人群重合度高的产品有利于商品转化，<span class="conclusion-advice">建议您投放</span>`;
+            } else if (top3.length > 0) {
+                const topStr = top3.map(f => `<span class="conclusion-tag">${f.name}</span>（占<span class="conclusion-pct">${f.pct}%</span>）`).join('、');
+                conclusionBody.innerHTML = `当前下单TOP人群特征是：${topStr}，和您历史投放产品的受众人群重合度为<span class="conclusion-overlap">${overlapPct}%</span>，投放人群重合度高的产品有利于商品转化，<span class="conclusion-advice">建议您投放</span>`;
+            }
+        }
 
         const dims = state.selectedPortraitDims;
         const colorMap = { region: 'blue', gender: 'green', age: 'orange', education: 'purple', marriage: 'cyan', consumption: 'rose', phone: 'indigo' };
@@ -415,64 +679,70 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 50);
     }
 
-    // 渲染主体下拉列表
+    // 渲染主体下拉列表（包含行业选择）
     function renderEntityDropdown() {
+        // 渲染行业选择区域 - checkbox 样式，单选逻辑
+        const industryContainer = document.getElementById('entity-industry-options');
+        if (industryContainer) {
+            const industries = Object.keys(industryEntityMap);
+            industryContainer.innerHTML = industries.map(ind => {
+                const isActive = ind === state.tempIndustry;
+                return `
+                    <label class="entity-industry-chip${isActive ? ' active' : ''}" data-industry="${ind}">
+                        <input type="checkbox" ${isActive ? 'checked' : ''}>
+                        <span>${ind}</span>
+                    </label>
+                `;
+            }).join('');
+        }
+
+        // 渲染主体列表 - 显示所有主体，当前行业的主体自动勾选，非当前行业的主体不勾选
         const list = document.getElementById('entity-dropdown-list');
         if (!list) return;
         list.innerHTML = '';
 
         entities.forEach(entity => {
             const item = document.createElement('div');
-            item.className = 'entity-dropdown-item';
+            const isCurrentIndustry = entity.industry === state.tempIndustry;
             const isChecked = state.tempSelectedEntities.includes(entity.id);
-            const industry = entity.industry;
-            const currentIndustry = state.tempSelectedEntities.length > 0 ? getEntityById(state.tempSelectedEntities[0]).industry : null;
-            const isDiff = currentIndustry && industry !== currentIndustry;
+            item.className = 'entity-dropdown-item' + (!isCurrentIndustry ? ' disabled' : '');
 
             item.innerHTML = `
-                <input type="checkbox" ${isChecked ? 'checked' : ''} data-entity-id="${entity.id}">
+                <input type="checkbox" ${isChecked ? 'checked' : ''} ${!isCurrentIndustry ? 'disabled' : ''} data-entity-id="${entity.id}">
                 <span>${entity.name}</span>
-                <span class="entity-industry-tag ${isDiff ? 'diff' : ''}">${industry}</span>
+                <span class="entity-industry-tag">${entity.industry}</span>
             `;
 
-            const checkbox = item.querySelector('input');
-            item.addEventListener('click', function(e) {
-                if (e.target.tagName === 'INPUT') return;
-                checkbox.checked = !checkbox.checked;
-                handleEntityCheckboxChange(entity.id, checkbox.checked);
-            });
-            checkbox.addEventListener('change', function() {
-                handleEntityCheckboxChange(entity.id, this.checked);
-            });
+            if (isCurrentIndustry) {
+                const checkbox = item.querySelector('input');
+                item.addEventListener('click', function(e) {
+                    if (e.target.tagName === 'INPUT') return;
+                    checkbox.checked = !checkbox.checked;
+                    handleEntityCheckboxChange(entity.id, checkbox.checked);
+                });
+                checkbox.addEventListener('change', function() {
+                    handleEntityCheckboxChange(entity.id, this.checked);
+                });
+            }
 
             list.appendChild(item);
         });
     }
 
     function handleEntityCheckboxChange(entityId, checked) {
-        let tempEntities = [...state.tempSelectedEntities];
         if (checked) {
-            if (!tempEntities.includes(entityId)) {
-                // 检查行业一致性
-                if (tempEntities.length > 0) {
-                    const currentIndustry = getEntityById(tempEntities[0]).industry;
-                    const newIndustry = getEntityById(entityId).industry;
-                    if (currentIndustry !== newIndustry) {
-                        // 显示错误提示
-                        showEntityError();
-                        // 取消勾选
-                        const checkbox = document.querySelector(`input[data-entity-id="${entityId}"]`);
-                        if (checkbox) checkbox.checked = false;
-                        return;
-                    }
-                }
-                tempEntities.push(entityId);
+            if (!state.tempSelectedEntities.includes(entityId)) {
+                state.tempSelectedEntities.push(entityId);
             }
         } else {
-            tempEntities = tempEntities.filter(id => id !== entityId);
+            // 取消勾选主体 - 至少保留一个
+            if (state.tempSelectedEntities.length <= 1) {
+                showToast('请至少选择一个主体');
+                renderEntityDropdown();
+                return;
+            }
+            state.tempSelectedEntities = state.tempSelectedEntities.filter(id => id !== entityId);
         }
-        state.tempSelectedEntities = tempEntities;
-        // 更新下拉中的行业标签
         renderEntityDropdown();
     }
 
@@ -536,13 +806,37 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         document.getElementById('overall-conversion-rate').textContent = rate + '%';
+
+        // 更新整体转化率的同行对比
+        const peerBadge = document.getElementById('overall-peer-badge');
+        if (peerBadge) {
+            const percentile = getOverallConversionPeerPercentile(state.selectedEntities);
+            if (percentile !== null) {
+                const peerClass = percentile <= 30 ? 'peer-low' : (percentile <= 60 ? 'peer-mid' : 'peer-high');
+                peerBadge.className = 'funnel-rate-peer ' + peerClass;
+                peerBadge.textContent = '位于同行转化率的前' + (100 - percentile) + '%';
+            }
+        }
+    }
+
+    // 获取整体转化率的同行对比百分位
+    function getOverallConversionPeerPercentile(entityIds) {
+        // 取各主体"下单率"的百分位平均作为整体转化率的同行对比参考
+        let sum = 0, count = 0;
+        entityIds.forEach(id => {
+            const data = peerBenchmarkData[id];
+            if (data) {
+                // 取下单率的百分位
+                const item = data.find(d => d.rateName === '下单率');
+                if (item) { sum += item.percentile; count++; }
+            }
+        });
+        return count > 0 ? Math.round(sum / count) : null;
     }
 
     // 更新行业信息
     function updateIndustryInfo() {
-        const industry = getCurrentIndustry();
-        document.getElementById('funnel-industry-info').textContent = `行业: ${industry} | 时间范围: 2025-06-18 至 2025-06-24`;
-        document.getElementById('industry-name-label').textContent = industry;
+        document.getElementById('funnel-industry-info').textContent = '时间范围: 2025-06-18 至 2025-06-24';
     }
 
     // 更新主体选择器标签
@@ -579,7 +873,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function refreshFunnelSection() {
         const funnelData = getMergedFunnelData(state.selectedEntities);
         const industry = getCurrentIndustry();
-        const iData = industryFunnelData[industry];
 
         // 设置默认活跃层为最后一层
         if (!state.activeFunnelStage || !funnelData.stages.find(s => s.name === state.activeFunnelStage)) {
@@ -587,47 +880,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         renderFunnelChart('customer-funnel-chart', funnelData, true);
-        renderFunnelChart('industry-funnel-chart', iData, false);
         renderPortrait(state.activeFunnelStage, funnelData);
         updateConversionRate();
         updateIndustryInfo();
         updateEntitySelectorLabel();
+        renderTrendChart();
     }
 
     // ==================== 事件绑定 ====================
-
-    // --- 行业漏斗悬停/点击交互 ---
-    const funnelIndustry = document.getElementById('funnel-industry');
-    const funnelMainArea = document.getElementById('funnel-main-area');
-
-    if (funnelIndustry && funnelMainArea) {
-        funnelIndustry.addEventListener('mouseenter', function() {
-            if (!state.industryLocked) {
-                funnelMainArea.classList.add('hover-expand');
-            }
-        });
-
-        funnelIndustry.addEventListener('mouseleave', function() {
-            if (!state.industryLocked) {
-                funnelMainArea.classList.remove('hover-expand');
-            }
-        });
-
-        funnelIndustry.addEventListener('click', function(e) {
-            e.stopPropagation();
-            if (state.industryLocked) {
-                // 再次点击，恢复初始状态
-                state.industryLocked = false;
-                funnelMainArea.classList.remove('locked-expand');
-                funnelMainArea.classList.remove('hover-expand');
-            } else {
-                // 锁定放大状态
-                state.industryLocked = true;
-                funnelMainArea.classList.remove('hover-expand');
-                funnelMainArea.classList.add('locked-expand');
-            }
-        });
-    }
 
     // --- 主体选择器 ---
     const entitySelector = document.getElementById('entity-selector');
@@ -639,6 +899,7 @@ document.addEventListener('DOMContentLoaded', function() {
         entitySelectorTrigger.addEventListener('click', function(e) {
             e.stopPropagation();
             state.tempSelectedEntities = [...state.selectedEntities];
+            state.tempIndustry = state.selectedIndustry;
             renderEntityDropdown();
             entitySelector.classList.toggle('open');
             // 关闭画像配置
@@ -649,6 +910,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (entityCancelBtn) {
         entityCancelBtn.addEventListener('click', function() {
             state.tempSelectedEntities = [...state.selectedEntities];
+            state.tempIndustry = state.selectedIndustry;
             entitySelector.classList.remove('open');
         });
     }
@@ -659,7 +921,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 showToast('请至少选择一个主体');
                 return;
             }
+            // 跨行业校验：检查选中的主体是否来自同一行业
+            const selectedIndustries = new Set();
+            state.tempSelectedEntities.forEach(id => {
+                const entity = getEntityById(id);
+                if (entity) selectedIndustries.add(entity.industry);
+            });
+            if (selectedIndustries.size > 1) {
+                showEntityError();
+                return;
+            }
             state.selectedEntities = [...state.tempSelectedEntities];
+            state.selectedIndustry = state.tempIndustry;
             entitySelector.classList.remove('open');
             // 重置活跃漏斗层（因为可能换了行业）
             state.activeFunnelStage = null;
@@ -667,8 +940,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // 行业选择事件委托 - checkbox 样式但单选逻辑
+    document.addEventListener('click', function(e) {
+        const chip = e.target.closest('.entity-industry-chip');
+        if (chip) {
+            e.stopPropagation();
+            e.preventDefault();
+            const industry = chip.dataset.industry;
+            if (industry !== state.tempIndustry) {
+                // 切换行业，自动全选该行业下所有主体
+                state.tempIndustry = industry;
+                state.tempSelectedEntities = [...industryEntityMap[industry]];
+            }
+            // 点击已选中行业不做任何操作（不允许取消行业选择）
+            renderEntityDropdown();
+            return; // 阻止后续的关闭逻辑
+        }
+    });
+
     // 点击外部关闭主体选择器
     document.addEventListener('click', function(e) {
+        // 排除行业 chip 的点击（切换行业不应关闭卡片）
+        if (e.target.closest('.entity-industry-chip')) return;
         if (entitySelector && !entitySelector.contains(e.target)) {
             entitySelector.classList.remove('open');
         }
@@ -788,6 +1081,115 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === conversionConfigModal) {
                 conversionConfigModal.classList.remove('open');
             }
+        });
+    }
+
+    // --- 折线图配置弹窗 ---
+    const trendConfigBtn = document.getElementById('trend-config-btn');
+    const trendConfigModal = document.getElementById('trend-config-modal');
+    const trendConfigClose = document.getElementById('trend-config-close');
+    const trendCancelBtn = document.getElementById('trend-cancel-btn');
+    const trendConfirmBtn = document.getElementById('trend-confirm-btn');
+    const trendNumeratorSel = document.getElementById('trend-numerator');
+    const trendDenominatorSel = document.getElementById('trend-denominator');
+
+    if (trendConfigBtn) {
+        trendConfigBtn.addEventListener('click', function() {
+            const industry = getCurrentIndustry();
+            const stages = getStagesForIndustry(industry);
+            trendNumeratorSel.innerHTML = stages.map(s =>
+                `<option value="${s}" ${s === state.trendNumerator ? 'selected' : ''}>${s}数</option>`
+            ).join('');
+            trendDenominatorSel.innerHTML = stages.map(s =>
+                `<option value="${s}" ${s === state.trendDenominator ? 'selected' : ''}>${s}数</option>`
+            ).join('');
+            trendConfigModal.classList.add('open');
+        });
+    }
+
+    if (trendConfigClose) {
+        trendConfigClose.addEventListener('click', function() {
+            trendConfigModal.classList.remove('open');
+        });
+    }
+
+    if (trendCancelBtn) {
+        trendCancelBtn.addEventListener('click', function() {
+            trendConfigModal.classList.remove('open');
+        });
+    }
+
+    if (trendConfirmBtn) {
+        trendConfirmBtn.addEventListener('click', function() {
+            state.trendNumerator = trendNumeratorSel.value;
+            state.trendDenominator = trendDenominatorSel.value;
+            trendConfigModal.classList.remove('open');
+            renderTrendChart();
+        });
+    }
+
+    if (trendConfigModal) {
+        trendConfigModal.addEventListener('click', function(e) {
+            if (e.target === trendConfigModal) {
+                trendConfigModal.classList.remove('open');
+            }
+        });
+    }
+
+    // 折线图日期范围选择
+    const trendDateRange = document.getElementById('trend-date-range');
+    if (trendDateRange) {
+        trendDateRange.addEventListener('click', function() {
+            showTrendDatePicker();
+        });
+    }
+
+    function showTrendDatePicker() {
+        // 简易日期选择弹窗
+        let existing = document.getElementById('trend-date-picker-modal');
+        if (existing) existing.remove();
+
+        const modal = document.createElement('div');
+        modal.id = 'trend-date-picker-modal';
+        modal.className = 'conversion-config-modal open';
+        modal.innerHTML = `
+            <div class="conversion-config-content" style="width:320px;">
+                <div class="conversion-config-title">
+                    <span>选择时间范围</span>
+                    <button class="conversion-config-close" id="trend-date-close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="conversion-config-body">
+                    <div class="conversion-config-row">
+                        <label>开始</label>
+                        <input type="date" id="trend-start-input" class="conversion-select" value="${state.trendStartDate}">
+                    </div>
+                    <div class="conversion-config-row">
+                        <label>结束</label>
+                        <input type="date" id="trend-end-input" class="conversion-select" value="${state.trendEndDate}">
+                    </div>
+                </div>
+                <div class="conversion-config-footer">
+                    <button class="entity-btn entity-btn-cancel" id="trend-date-cancel-btn">取消</button>
+                    <button class="entity-btn entity-btn-confirm" id="trend-date-confirm-btn">确定</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        document.getElementById('trend-date-close').addEventListener('click', () => modal.remove());
+        document.getElementById('trend-date-cancel-btn').addEventListener('click', () => modal.remove());
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) modal.remove();
+        });
+        document.getElementById('trend-date-confirm-btn').addEventListener('click', function() {
+            const start = document.getElementById('trend-start-input').value;
+            const end = document.getElementById('trend-end-input').value;
+            if (start && end && start <= end) {
+                state.trendStartDate = start;
+                state.trendEndDate = end;
+                renderTrendChart();
+            }
+            modal.remove();
         });
     }
 
@@ -956,9 +1358,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 500);
 
-    // 行业选择 / 日期选择 / 其他按钮
-    const industrySelect = document.querySelector('.industry-select');
-    if (industrySelect) industrySelect.addEventListener('click', () => showToast('行业选择功能开发中...'));
     const datePicker = document.querySelector('.date-picker');
     if (datePicker) datePicker.addEventListener('click', () => showToast('日期选择功能开发中...'));
     const btnRecommend = document.querySelector('.btn-recommend');
@@ -970,4 +1369,54 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ==================== 初始化 ====================
     refreshFunnelSection();
+
+    // ==================== 趋势图交互（hover放大 + click锁定） ====================
+    const trendPanel = document.getElementById('trend-chart-panel');
+    const funnelMainArea = document.getElementById('funnel-main-area');
+    let trendLocked = false; // 趋势图是否锁定展开
+
+    if (trendPanel && funnelMainArea) {
+        // 鼠标进入趋势图
+        trendPanel.addEventListener('mouseenter', function() {
+            if (!trendLocked) {
+                trendPanel.classList.add('hover-expand');
+                funnelMainArea.classList.add('trend-expanded');
+                // 重新渲染折线图以适配新尺寸
+                setTimeout(() => renderTrendChart(), 50);
+            }
+        });
+
+        // 鼠标离开趋势图
+        trendPanel.addEventListener('mouseleave', function() {
+            if (!trendLocked) {
+                trendPanel.classList.remove('hover-expand');
+                funnelMainArea.classList.remove('trend-expanded');
+                // 重新渲染折线图以适配新尺寸
+                setTimeout(() => renderTrendChart(), 50);
+            }
+        });
+
+        // 点击趋势图
+        trendPanel.addEventListener('click', function(e) {
+            // 忽略控件点击（配置按钮、日期选择等）
+            if (e.target.closest('.trend-config-btn') || e.target.closest('.trend-date-range') || e.target.closest('.trend-dot')) {
+                return;
+            }
+
+            if (trendLocked) {
+                // 已锁定，点击解锁恢复初始状态
+                trendLocked = false;
+                trendPanel.classList.remove('locked-expand');
+                funnelMainArea.classList.remove('trend-expanded');
+                setTimeout(() => renderTrendChart(), 50);
+            } else {
+                // 未锁定，点击锁定为展开状态
+                trendLocked = true;
+                trendPanel.classList.remove('hover-expand');
+                trendPanel.classList.add('locked-expand');
+                funnelMainArea.classList.add('trend-expanded');
+                setTimeout(() => renderTrendChart(), 50);
+            }
+        });
+    }
 });
