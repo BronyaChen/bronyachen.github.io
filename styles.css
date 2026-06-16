@@ -40,7 +40,7 @@ body {
     flex-direction: column;
 }
 
-/* 顶部导航 */
+/* 椤堕儴瀵艰埅 */
 .top-nav {
     height: 56px;
     background: var(--bg-card);
@@ -157,7 +157,7 @@ body {
     cursor: pointer;
 }
 
-/* 主容器 */
+/* 涓诲鍣� */
 .main-container {
     display: flex;
     flex: 1;
@@ -165,7 +165,7 @@ body {
     min-height: calc(100vh - 56px);
 }
 
-/* 侧边栏 */
+/* 渚ц竟鏍� */
 .sidebar {
     width: 220px;
     background: var(--bg-sidebar);
@@ -251,7 +251,7 @@ body {
     border-top: 1px solid var(--border-light);
 }
 
-/* 主内容 */
+/* 涓诲唴瀹� */
 .content {
     flex: 1;
     margin-left: 220px;
@@ -259,7 +259,7 @@ body {
     max-width: calc(100% - 220px);
 }
 
-/* 内容头部 */
+/* 鍐呭澶撮儴 */
 .content-header {
     margin-bottom: 20px;
 }
@@ -343,6 +343,76 @@ body {
     cursor: pointer;
 }
 
+/* 涓讳綋涓嬫媺鍗＄墖鍐呯殑琛屼笟閫夋嫨 */
+.entity-dropdown-industry {
+    padding: 8px 12px 4px;
+}
+
+.entity-industry-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.entity-industry-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.entity-industry-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+}
+
+.entity-industry-chip input[type="checkbox"] {
+    display: none;
+}
+
+.entity-industry-chip:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(37, 99, 235, 0.04);
+}
+
+.entity-industry-chip.active {
+    border-color: var(--primary);
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.entity-dropdown-divider {
+    height: 1px;
+    background: var(--border-light);
+    margin: 6px 0;
+}
+
+.entity-dropdown-item.disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.entity-dropdown-item .entity-industry-tag {
+    margin-left: auto;
+    font-size: 11px;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--primary);
+}
+
 .data-source {
     display: flex;
     align-items: center;
@@ -377,7 +447,7 @@ body {
     transform: rotate(180deg);
 }
 
-/* 区块标题 */
+/* 鍖哄潡鏍囬 */
 .section-title {
     display: flex;
     align-items: center;
@@ -399,7 +469,7 @@ body {
     margin-left: 4px;
 }
 
-/* AI 洞察 */
+/* AI 娲炲療 */
 .ai-insights {
     background: var(--bg-card);
     border-radius: var(--radius-lg);
@@ -484,7 +554,7 @@ body {
     line-height: 1.6;
 }
 
-/* 核心指标 */
+/* 鏍稿績鎸囨爣 */
 .core-metrics {
     background: var(--bg-card);
     border-radius: var(--radius-lg);
@@ -541,7 +611,7 @@ body {
     color: var(--success);
 }
 
-/* ========== 营销转化漏斗 ========== */
+/* ========== 钀ラ攢杞寲婕忔枟 ========== */
 .funnel-section {
     background: var(--bg-card);
     border-radius: var(--radius-lg);
@@ -595,6 +665,13 @@ body {
     display: flex;
     align-items: center;
     gap: 4px;
+    flex-wrap: wrap;
+}
+
+.funnel-summary-item .funnel-rate-peer {
+    width: fit-content;
+    margin-left: 0;
+    margin-top: 2px;
 }
 
 .trend-badge {
@@ -633,7 +710,7 @@ body {
     color: var(--primary);
 }
 
-/* 主体选择器 */
+/* 涓讳綋閫夋嫨鍣� */
 .entity-selector {
     position: relative;
 }
@@ -671,7 +748,7 @@ body {
     position: absolute;
     top: calc(100% + 4px);
     right: 0;
-    width: 280px;
+    width: 300px;
     background: white;
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
@@ -732,20 +809,6 @@ body {
     cursor: pointer;
 }
 
-.entity-dropdown-item .entity-industry-tag {
-    margin-left: auto;
-    font-size: 11px;
-    padding: 1px 6px;
-    border-radius: 4px;
-    background: rgba(37, 99, 235, 0.08);
-    color: var(--primary);
-}
-
-.entity-dropdown-item .entity-industry-tag.diff {
-    background: rgba(245, 158, 11, 0.1);
-    color: var(--warning);
-}
-
 .entity-dropdown-footer {
     padding: 8px 16px 12px;
     display: flex;
@@ -782,7 +845,7 @@ body {
     background: var(--primary-dark);
 }
 
-/* 画像配置 */
+/* 鐢诲儚閰嶇疆 */
 .portrait-config {
     position: relative;
 }
@@ -872,7 +935,7 @@ body {
     margin-top: 4px;
 }
 
-/* 转化率配置弹窗 */
+/* 杞寲鐜囬厤缃脊绐� */
 .conversion-config-modal {
     position: fixed;
     inset: 0;
@@ -961,7 +1024,7 @@ body {
     border-top: 1px solid var(--border-light);
 }
 
-/* 漏斗主体区域 */
+/* 婕忔枟涓讳綋鍖哄煙 */
 .funnel-body {
     position: relative;
 }
@@ -979,65 +1042,182 @@ body {
     position: relative;
 }
 
-/* 初始状态：客户漏斗占大部分，行业漏斗在右下角较小 */
+/* 鍒濆鐘舵€侊細瀹㈡埛婕忔枟鍗犲ぇ閮ㄥ垎锛岃涓氭紡鏂楀湪鍙充笅瑙掕緝灏� */
 .funnel-customer {
     flex: 1;
     min-width: 0;
-    padding-right: 16px;
+    padding-right: 40%;
 }
 
 .funnel-industry {
+    display: none; /* 闅愯棌鏃ц涓氭紡鏂� */
+}
+
+/* 杞寲鐜囧彉鍖栬秼鍔垮浘 */
+.trend-chart-panel {
     position: absolute;
     right: 0;
     bottom: 0;
     width: 38%;
-    opacity: 0.9;
-    border: 1px solid var(--border);
+    height: 55%;
+    border: 1px solid rgba(229, 231, 235, 0.5);
     border-radius: var(--radius-lg);
-    background: rgba(255,255,255,0.97);
-    padding: 10px 12px;
+    background: rgba(255,255,255,0.65);
+    padding: 12px 14px;
     cursor: pointer;
     z-index: 10;
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(8px);
+    overflow: hidden;
 }
 
-.funnel-industry::before {
-    content: '悬停或点击查看行业对比';
-    position: absolute;
-    top: -26px;
-    left: 50%;
-    transform: translateX(-50%);
+.trend-chart-panel:hover {
+    border-color: rgba(37, 99, 235, 0.3);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+/* 瓒嬪娍鍥� hover 鏀惧ぇ鐘舵€侊紙鏈攣瀹氭椂榧犳爣鎮仠锛� */
+.trend-chart-panel.hover-expand {
+    width: 50%;
+    height: 100%;
+    background: rgba(255,255,255,0.92);
+    border-color: var(--border);
+    backdrop-filter: blur(12px);
+}
+
+/* 瓒嬪娍鍥鹃攣瀹氭斁澶х姸鎬侊紙鐐瑰嚮鍚庨攣瀹氾級 */
+.trend-chart-panel.locked-expand {
+    width: 50%;
+    height: 100%;
+    background: rgba(255,255,255,0.95);
+    border-color: rgba(37, 99, 235, 0.25);
+    backdrop-filter: blur(12px);
+    cursor: pointer;
+}
+
+/* 婕忔枟鍥惧湪瓒嬪娍鍥惧睍寮€鏃剁缉灏� */
+.funnel-main-area.trend-expanded .funnel-customer {
+    width: 50%;
+    flex: none;
+    padding-right: 12px;
+}
+
+.trend-chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 8px;
+}
+
+.trend-chart-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.trend-dot {
+    background: #f59e0b;
+}
+
+.trend-rate-label {
+    font-size: 10px;
+    font-weight: 400;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning);
+}
+
+.trend-chart-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.trend-date-range {
+    display: flex;
+    align-items: center;
+    gap: 4px;
     font-size: 11px;
     color: var(--text-muted);
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.2s;
+    cursor: pointer;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: white;
+    transition: all 0.15s;
 }
 
-.funnel-industry:hover::before {
-    opacity: 1;
+.trend-date-range:hover {
+    border-color: var(--primary);
+    color: var(--primary);
 }
 
-/* 悬停行业漏斗放大状态 */
-.funnel-main-area.hover-expand .funnel-customer,
-.funnel-main-area.locked-expand .funnel-customer {
-    flex: 0 0 50%;
-    padding-right: 8px;
+.trend-date-range i {
+    font-size: 10px;
 }
 
-.funnel-main-area.hover-expand .funnel-industry,
-.funnel-main-area.locked-expand .funnel-industry {
-    position: relative;
-    flex: 0 0 50%;
-    max-height: none;
-    opacity: 1;
-    width: auto;
-    border: none;
-    box-shadow: none;
-    background: transparent;
-    padding: 0 0 0 8px;
+.trend-config-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    transition: all 0.15s;
+}
+
+.trend-config-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.trend-chart-body {
+    width: 100%;
+    overflow: hidden;
+}
+
+.trend-svg {
+    display: block;
+    width: 100%;
+}
+
+.trend-dot {
+    cursor: pointer;
+    transition: r 0.15s;
+}
+
+.trend-dot:hover {
+    r: 5;
+}
+
+.trend-tooltip {
+    position: fixed;
+    background: var(--text-primary);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    z-index: 600;
+    pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.trend-tooltip-date {
+    font-size: 10px;
+    opacity: 0.8;
+    margin-bottom: 2px;
+}
+
+.trend-tooltip-rate {
+    font-weight: 600;
+    font-size: 13px;
 }
 
 .funnel-panel-label {
@@ -1075,7 +1255,7 @@ body {
     color: var(--warning);
 }
 
-/* 漏斗图 - 真漏斗样式 */
+/* 婕忔枟鍥� - 鐪熸紡鏂楁牱寮� */
 .funnel-chart {
     display: flex;
     flex-direction: column;
@@ -1111,7 +1291,7 @@ body {
     padding: 4px 12px;
 }
 
-/* 漏斗层颜色由 JS 动态设置，逐层渐变 */
+/* 婕忔枟灞傞鑹茬敱 JS 鍔ㄦ€佽缃紝閫愬眰娓愬彉 */
 
 .funnel-layer-bar:hover {
     filter: brightness(1.1);
@@ -1162,7 +1342,7 @@ body {
     background: rgba(0,0,0,0.15);
 }
 
-/* 转化率层 - 两层之间 */
+/* 杞寲鐜囧眰 - 涓ゅ眰涔嬮棿 */
 .funnel-rate {
     display: flex;
     align-items: center;
@@ -1205,59 +1385,33 @@ body {
     color: var(--danger);
 }
 
-/* 行业漏斗的转化率标签颜色 */
-.funnel-industry .funnel-rate-value {
-    color: var(--warning);
-}
-
-/* 行业漏斗缩小状态下的文字适配 */
-.funnel-main-area:not(.hover-expand):not(.locked-expand) .funnel-industry .funnel-bar-name,
-.funnel-main-area:not(.hover-expand):not(.locked-expand) .funnel-industry .funnel-bar-trend {
-    display: none;
-}
-
-.funnel-main-area:not(.hover-expand):not(.locked-expand) .funnel-industry .funnel-rate-name {
-    display: none;
-}
-
-/* 行业漏斗初始状态下的缩放 */
-.funnel-main-area:not(.hover-expand):not(.locked-expand) .funnel-industry .funnel-chart {
-    transform: scale(1);
-    transform-origin: top left;
-}
-
-.funnel-main-area.hover-expand .funnel-industry .funnel-chart,
-.funnel-main-area.locked-expand .funnel-industry .funnel-chart {
-    transform: scale(1);
-}
-
-/* 行业漏斗缩小状态下更紧凑 */
-.funnel-main-area:not(.hover-expand):not(.locked-expand) .funnel-industry .funnel-layer-bar {
-    height: 32px;
-    gap: 0;
-    min-width: 60px;
-    padding: 2px 6px;
-}
-
-.funnel-main-area:not(.hover-expand):not(.locked-expand) .funnel-industry .funnel-bar-top {
-    gap: 4px;
-}
-
-.funnel-main-area:not(.hover-expand):not(.locked-expand) .funnel-industry .funnel-bar-value {
-    font-size: 11px;
-}
-
-.funnel-main-area:not(.hover-expand):not(.locked-expand) .funnel-industry .funnel-rate {
-    padding: 2px 0;
-}
-
-.funnel-main-area:not(.hover-expand):not(.locked-expand) .funnel-industry .funnel-rate-content {
+/* 鍚岃瀵规瘮鏍囩 */
+.funnel-rate-peer {
     font-size: 10px;
-    padding: 2px 8px;
-    gap: 4px;
+    padding: 1px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
-/* 漏斗层入场动画 */
+.funnel-rate-peer.peer-low {
+    background: rgba(239, 68, 68, 0.12);
+    color: #dc2626;
+}
+
+.funnel-rate-peer.peer-mid {
+    background: rgba(245, 158, 11, 0.12);
+    color: #d97706;
+}
+
+.funnel-rate-peer.peer-high {
+    background: rgba(34, 197, 94, 0.12);
+    color: #16a34a;
+}
+
+/* 琛屼笟婕忔枟鐨勮浆鍖栫巼鏍囩棰滆壊 - 淇濈暀缁欐棫寮曠敤 */
+
+/* 婕忔枟灞傚叆鍦哄姩鐢� */
 .funnel-layer {
     opacity: 0;
     animation: funnelLayerIn 0.4s ease forwards;
@@ -1293,11 +1447,70 @@ body {
     }
 }
 
-/* ========== 画像区域 ========== */
+/* ========== 鐢诲儚鍖哄煙 ========== */
 .funnel-portrait {
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid var(--border-light);
+}
+
+/* 鐢诲儚缁撹 */
+.portrait-conclusion {
+    background: linear-gradient(135deg, #f0f5ff 0%, #e8f4f8 100%);
+    border: 1px solid #d0e3f7;
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin-bottom: 16px;
+}
+
+.portrait-conclusion-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.portrait-conclusion-header i {
+    font-size: 14px;
+}
+
+.portrait-conclusion-body {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.portrait-conclusion-body .conclusion-highlight {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.portrait-conclusion-body .conclusion-tag {
+    display: inline-block;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary);
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0 2px;
+}
+
+.portrait-conclusion-body .conclusion-pct {
+    color: #e67e22;
+    font-weight: 600;
+}
+
+.portrait-conclusion-body .conclusion-overlap {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.portrait-conclusion-body .conclusion-advice {
+    color: var(--text-secondary);
 }
 
 .portrait-header {
@@ -1406,7 +1619,7 @@ body {
     font-size: 11px;
 }
 
-/* 报错提示 */
+/* 鎶ラ敊鎻愮ず */
 .entity-error-toast {
     position: fixed;
     top: 50%;
@@ -1432,7 +1645,7 @@ body {
     transform: translate(-50%, -50%) scale(1);
 }
 
-/* ========== 动画 ========== */
+/* ========== 鍔ㄧ敾 ========== */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -1461,7 +1674,7 @@ body {
 .metric-card:nth-child(5) { animation-delay: 0.18s; }
 .metric-card:nth-child(6) { animation-delay: 0.2s; }
 
-/* 响应式 */
+/* 鍝嶅簲寮� */
 @media (max-width: 1400px) {
     .metrics-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -1494,16 +1707,16 @@ body {
     .portrait-grid {
         grid-template-columns: 1fr;
     }
-    .funnel-main-area.hover-expand .funnel-customer,
-    .funnel-main-area.locked-expand .funnel-customer,
-    .funnel-main-area.hover-expand .funnel-industry,
-    .funnel-main-area.locked-expand .funnel-industry {
-        flex: 0 0 100%;
-    }
-    .funnel-industry {
+    .trend-chart-panel,
+    .trend-chart-panel.hover-expand,
+    .trend-chart-panel.locked-expand {
         position: relative !important;
-        width: auto !important;
-        max-height: none !important;
+        width: 100% !important;
+        height: auto !important;
         margin-top: 16px;
+    }
+    .funnel-main-area.trend-expanded .funnel-customer {
+        width: 100%;
+        flex: 1;
     }
 }
