@@ -636,6 +636,44 @@ body {
     gap: 8px;
 }
 
+/* 婕忔枟缁村害鍒囨崲 */
+.funnel-mode-toggle {
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-left: 12px;
+}
+
+.funnel-mode-btn {
+    padding: 3px 14px;
+    border: none;
+    background: white;
+    font-size: 12px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.funnel-mode-btn:first-child {
+    border-right: 1px solid var(--border);
+}
+
+.funnel-mode-btn:hover {
+    color: var(--primary);
+    background: rgba(37, 99, 235, 0.04);
+}
+
+.funnel-mode-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+.funnel-mode-btn.active:hover {
+    background: var(--primary-dark);
+    color: white;
+}
+
 .funnel-header-left .section-title {
     margin-bottom: 0;
 }
@@ -644,6 +682,37 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* 婕忔枟鍥炬椂闂撮€夋嫨鍣� */
+.funnel-time-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    cursor: pointer;
+}
+
+.funnel-time-picker-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 13px;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+}
+
+.funnel-time-picker:hover .funnel-time-picker-label {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.funnel-time-picker-label i {
+    font-size: 12px;
 }
 
 .funnel-summary {
@@ -694,6 +763,144 @@ body {
 .funnel-info {
     color: var(--text-muted);
     font-size: 12px;
+}
+
+/* ========== 椤跺眰绛涢€夋爮 ========== */
+.top-filter-bar {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 12px 0 4px;
+    flex-wrap: wrap;
+}
+
+.top-filter-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.top-filter-label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.filter-help-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: help;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.filter-help-icon:hover {
+    color: var(--primary);
+}
+
+.filter-help-icon::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-primary);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 300;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.filter-help-icon::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: var(--text-primary);
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 300;
+}
+
+.filter-help-icon:hover::after,
+.filter-help-icon:hover::before {
+    opacity: 1;
+}
+
+/* 杞寲鍛ㄦ湡閫夋嫨鍣� */
+.conversion-period-selector {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.period-btn {
+    padding: 5px 14px;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: var(--radius);
+    font-size: 13px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.period-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.period-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.period-custom-input {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 4px;
+}
+
+.period-custom-input input {
+    width: 70px;
+    padding: 5px 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text-primary);
+    outline: none;
+}
+
+.period-custom-input input:focus {
+    border-color: var(--primary);
+}
+
+.period-unit {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.period-error {
+    font-size: 12px;
+    color: var(--danger);
+    margin-left: 4px;
+    white-space: nowrap;
 }
 
 .conversion-config-btn {
@@ -1027,80 +1234,36 @@ body {
 /* 婕忔枟涓讳綋鍖哄煙 */
 .funnel-body {
     position: relative;
-}
-
-.funnel-main-area {
     display: flex;
-    position: relative;
-    min-height: 420px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-direction: column;
+    gap: 32px;
 }
 
-.funnel-panel {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
-    position: relative;
+.funnel-row {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
 }
 
-/* 鍒濆鐘舵€侊細瀹㈡埛婕忔枟鍗犲ぇ閮ㄥ垎锛岃涓氭紡鏂楀湪鍙充笅瑙掕緝灏� */
-.funnel-customer {
+.funnel-col-left {
     flex: 1;
     min-width: 0;
-    padding-right: 40%;
 }
 
-.funnel-industry {
-    display: none; /* 闅愯棌鏃ц涓氭紡鏂� */
-}
-
-/* 杞寲鐜囧彉鍖栬秼鍔垮浘 */
-.trend-chart-panel {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+.funnel-col-right {
     width: 38%;
-    height: 55%;
-    border: 1px solid rgba(229, 231, 235, 0.5);
+    flex-shrink: 0;
+    border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    background: rgba(255,255,255,0.65);
-    padding: 12px 14px;
-    cursor: pointer;
-    z-index: 10;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(8px);
-    overflow: hidden;
+    background: var(--bg-card);
+    padding: 16px 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
 }
 
-.trend-chart-panel:hover {
-    border-color: rgba(37, 99, 235, 0.3);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-}
-
-/* 瓒嬪娍鍥� hover 鏀惧ぇ鐘舵€侊紙鏈攣瀹氭椂榧犳爣鎮仠锛� */
-.trend-chart-panel.hover-expand {
-    width: 50%;
-    height: 100%;
-    background: rgba(255,255,255,0.92);
-    border-color: var(--border);
-    backdrop-filter: blur(12px);
-}
-
-/* 瓒嬪娍鍥鹃攣瀹氭斁澶х姸鎬侊紙鐐瑰嚮鍚庨攣瀹氾級 */
-.trend-chart-panel.locked-expand {
-    width: 50%;
-    height: 100%;
-    background: rgba(255,255,255,0.95);
+.funnel-col-right:hover {
     border-color: rgba(37, 99, 235, 0.25);
-    backdrop-filter: blur(12px);
-    cursor: pointer;
-}
-
-/* 婕忔枟鍥惧湪瓒嬪娍鍥惧睍寮€鏃剁缉灏� */
-.funnel-main-area.trend-expanded .funnel-customer {
-    width: 50%;
-    flex: none;
-    padding-right: 12px;
+    box-shadow: var(--shadow-hover);
 }
 
 .trend-chart-header {
@@ -1186,6 +1349,11 @@ body {
 .trend-svg {
     display: block;
     width: 100%;
+}
+
+.trend-x-label {
+    font-size: 8px;
+    fill: #9ca3af;
 }
 
 .trend-dot {
@@ -1286,9 +1454,9 @@ body {
     cursor: pointer;
     position: relative;
     margin: 0 auto;
-    min-width: 140px;
+    min-width: 260px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    padding: 4px 12px;
+    padding: 4px 16px;
 }
 
 /* 婕忔枟灞傞鑹茬敱 JS 鍔ㄦ€佽缃紝閫愬眰娓愬彉 */
@@ -1307,7 +1475,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
     width: 100%;
 }
 
@@ -1316,6 +1483,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
+    gap: 8px;
 }
 
 .funnel-bar-name {
@@ -1340,6 +1508,29 @@ body {
 
 .funnel-bar-trend.down {
     background: rgba(0,0,0,0.15);
+}
+
+.funnel-bar-cost-peer {
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.funnel-bar-cost-peer.peer-low {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fecaca;
+}
+
+.funnel-bar-cost-peer.peer-mid {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fde68a;
+}
+
+.funnel-bar-cost-peer.peer-high {
+    background: rgba(34, 197, 94, 0.2);
+    color: #bbf7d0;
 }
 
 /* 杞寲鐜囧眰 - 涓ゅ眰涔嬮棿 */
@@ -1707,16 +1898,12 @@ body {
     .portrait-grid {
         grid-template-columns: 1fr;
     }
-    .trend-chart-panel,
-    .trend-chart-panel.hover-expand,
-    .trend-chart-panel.locked-expand {
-        position: relative !important;
-        width: 100% !important;
-        height: auto !important;
-        margin-top: 16px;
+    .funnel-row {
+        flex-direction: column;
+        gap: 20px;
     }
-    .funnel-main-area.trend-expanded .funnel-customer {
-        width: 100%;
-        flex: 1;
+    .funnel-col-right {
+        width: 100% !important;
+        margin-top: 10px;
     }
 }
