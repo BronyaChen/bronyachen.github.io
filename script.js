@@ -46,15 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 { name: '到店率', value: 66.67, trend: 12.46, up: false },
                 { name: '下单率', value: 66.67, trend: 18.34, up: true },
             ],
-            portraits: {
-                '曝光': { region: [{n:'广东',p:35},{n:'湖南',p:22},{n:'广西',p:18},{n:'福建',p:15},{n:'其他',p:10}], gender: [{n:'男',p:45},{n:'女',p:55}], age: [{n:'18-24',p:18},{n:'25-34',p:38},{n:'35-44',p:28},{n:'45+',p:16}], education: [{n:'高中',p:22},{n:'大专',p:32},{n:'本科',p:38},{n:'硕士+',p:8}], marriage: [{n:'未婚',p:40},{n:'已婚',p:52},{n:'其他',p:8}], consumption: [{n:'高',p:12},{n:'中高',p:28},{n:'中等',p:38},{n:'中低',p:15},{n:'低',p:7}], phone: [{n:'iPhone',p:35},{n:'华为',p:28},{n:'小米',p:15},{n:'OPPO',p:10},{n:'其他',p:12}] },
-                '点击': { region: [{n:'广东',p:38},{n:'湖南',p:20},{n:'广西',p:17},{n:'福建',p:16},{n:'其他',p:9}], gender: [{n:'男',p:42},{n:'女',p:58}], age: [{n:'18-24',p:20},{n:'25-34',p:40},{n:'35-44',p:26},{n:'45+',p:14}], education: [{n:'高中',p:18},{n:'大专',p:30},{n:'本科',p:42},{n:'硕士+',p:10}], marriage: [{n:'未婚',p:38},{n:'已婚',p:54},{n:'其他',p:8}], consumption: [{n:'高',p:14},{n:'中高',p:30},{n:'中等',p:36},{n:'中低',p:13},{n:'低',p:7}], phone: [{n:'iPhone',p:38},{n:'华为',p:26},{n:'小米',p:14},{n:'OPPO',p:10},{n:'其他',p:12}] },
-                '加粉': { region: [{n:'广东',p:40},{n:'湖南',p:19},{n:'广西',p:16},{n:'福建',p:17},{n:'其他',p:8}], gender: [{n:'男',p:38},{n:'女',p:62}], age: [{n:'18-24',p:22},{n:'25-34',p:42},{n:'35-44',p:24},{n:'45+',p:12}], education: [{n:'高中',p:15},{n:'大专',p:28},{n:'本科',p:45},{n:'硕士+',p:12}], marriage: [{n:'未婚',p:35},{n:'已婚',p:56},{n:'其他',p:9}], consumption: [{n:'高',p:16},{n:'中高',p:32},{n:'中等',p:34},{n:'中低',p:12},{n:'低',p:6}], phone: [{n:'iPhone',p:42},{n:'华为',p:24},{n:'小米',p:13},{n:'OPPO',p:9},{n:'其他',p:12}] },
-                '开口': { region: [{n:'广东',p:42},{n:'湖南',p:18},{n:'广西',p:15},{n:'福建',p:18},{n:'其他',p:7}], gender: [{n:'男',p:35},{n:'女',p:65}], age: [{n:'18-24',p:24},{n:'25-34',p:44},{n:'35-44',p:22},{n:'45+',p:10}], education: [{n:'高中',p:12},{n:'大专',p:26},{n:'本科',p:48},{n:'硕士+',p:14}], marriage: [{n:'未婚',p:32},{n:'已婚',p:58},{n:'其他',p:10}], consumption: [{n:'高',p:18},{n:'中高',p:34},{n:'中等',p:32},{n:'中低',p:10},{n:'低',p:6}], phone: [{n:'iPhone',p:46},{n:'华为',p:22},{n:'小米',p:12},{n:'OPPO',p:8},{n:'其他',p:12}] },
-                '留资': { region: [{n:'广东',p:44},{n:'湖南',p:17},{n:'广西',p:14},{n:'福建',p:19},{n:'其他',p:6}], gender: [{n:'男',p:32},{n:'女',p:68}], age: [{n:'18-24',p:25},{n:'25-34',p:46},{n:'35-44',p:20},{n:'45+',p:9}], education: [{n:'高中',p:10},{n:'大专',p:24},{n:'本科',p:50},{n:'硕士+',p:16}], marriage: [{n:'未婚',p:30},{n:'已婚',p:60},{n:'其他',p:10}], consumption: [{n:'高',p:20},{n:'中高',p:36},{n:'中等',p:30},{n:'中低',p:9},{n:'低',p:5}], phone: [{n:'iPhone',p:50},{n:'华为',p:20},{n:'小米',p:12},{n:'OPPO',p:7},{n:'其他',p:11}] },
-                '到店': { region: [{n:'广东',p:48},{n:'湖南',p:16},{n:'广西',p:12},{n:'福建',p:18},{n:'其他',p:6}], gender: [{n:'男',p:30},{n:'女',p:70}], age: [{n:'18-24',p:28},{n:'25-34',p:48},{n:'35-44',p:18},{n:'45+',p:6}], education: [{n:'高中',p:8},{n:'大专',p:22},{n:'本科',p:52},{n:'硕士+',p:18}], marriage: [{n:'未婚',p:28},{n:'已婚',p:62},{n:'其他',p:10}], consumption: [{n:'高',p:22},{n:'中高',p:38},{n:'中等',p:28},{n:'中低',p:8},{n:'低',p:4}], phone: [{n:'iPhone',p:54},{n:'华为',p:18},{n:'小米',p:11},{n:'OPPO',p:7},{n:'其他',p:10}] },
-                '下单': { region: [{n:'广东',p:50},{n:'湖南',p:15},{n:'广西',p:10},{n:'福建',p:19},{n:'其他',p:6}], gender: [{n:'男',p:28},{n:'女',p:72}], age: [{n:'18-24',p:30},{n:'25-34',p:50},{n:'35-44',p:15},{n:'45+',p:5}], education: [{n:'高中',p:6},{n:'大专',p:20},{n:'本科',p:54},{n:'硕士+',p:20}], marriage: [{n:'未婚',p:25},{n:'已婚',p:65},{n:'其他',p:10}], consumption: [{n:'高',p:25},{n:'中高',p:40},{n:'中等',p:25},{n:'中低',p:6},{n:'低',p:4}], phone: [{n:'iPhone',p:58},{n:'华为',p:16},{n:'小米',p:10},{n:'OPPO',p:7},{n:'其他',p:9}] },
-            }
+            cost: { total: 125800, trend: 12.50 },
+            portraits: {}
         },
         dongnan: {
             stages: [
@@ -66,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 { name: '到店', value: 980, trend: 14.20 },
                 { name: '下单', value: 650, trend: 19.50 },
             ],
+            cost: { total: 98500, trend: 8.30 },
             rates: [
                 { name: '点击率', value: 6.47, trend: 1.80, up: true },
                 { name: '加粉率', value: 32.45, trend: 5.10, up: true },
@@ -74,15 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 { name: '到店率', value: 67.59, trend: 10.30, up: false },
                 { name: '下单率', value: 66.33, trend: 16.80, up: true },
             ],
-            portraits: {
-                '曝光': { region: [{n:'浙江',p:40},{n:'江苏',p:28},{n:'上海',p:18},{n:'安徽',p:8},{n:'其他',p:6}], gender: [{n:'男',p:48},{n:'女',p:52}], age: [{n:'18-24',p:22},{n:'25-34',p:36},{n:'35-44',p:26},{n:'45+',p:16}], education: [{n:'高中',p:20},{n:'大专',p:34},{n:'本科',p:38},{n:'硕士+',p:8}], marriage: [{n:'未婚',p:42},{n:'已婚',p:50},{n:'其他',p:8}], consumption: [{n:'高',p:14},{n:'中高',p:30},{n:'中等',p:36},{n:'中低',p:13},{n:'低',p:7}], phone: [{n:'iPhone',p:38},{n:'华为',p:26},{n:'小米',p:14},{n:'OPPO',p:11},{n:'其他',p:11}] },
-                '点击': { region: [{n:'浙江',p:42},{n:'江苏',p:27},{n:'上海',p:19},{n:'安徽',p:7},{n:'其他',p:5}], gender: [{n:'男',p:44},{n:'女',p:56}], age: [{n:'18-24',p:24},{n:'25-34',p:38},{n:'35-44',p:24},{n:'45+',p:14}], education: [{n:'高中',p:17},{n:'大专',p:31},{n:'本科',p:42},{n:'硕士+',p:10}], marriage: [{n:'未婚',p:40},{n:'已婚',p:52},{n:'其他',p:8}], consumption: [{n:'高',p:16},{n:'中高',p:32},{n:'中等',p:34},{n:'中低',p:12},{n:'低',p:6}], phone: [{n:'iPhone',p:40},{n:'华为',p:24},{n:'小米',p:14},{n:'OPPO',p:10},{n:'其他',p:12}] },
-                '加粉': { region: [{n:'浙江',p:44},{n:'江苏',p:26},{n:'上海',p:20},{n:'安徽',p:6},{n:'其他',p:4}], gender: [{n:'男',p:40},{n:'女',p:60}], age: [{n:'18-24',p:26},{n:'25-34',p:40},{n:'35-44',p:22},{n:'45+',p:12}], education: [{n:'高中',p:14},{n:'大专',p:28},{n:'本科',p:46},{n:'硕士+',p:12}], marriage: [{n:'未婚',p:38},{n:'已婚',p:54},{n:'其他',p:8}], consumption: [{n:'高',p:18},{n:'中高',p:34},{n:'中等',p:32},{n:'中低',p:10},{n:'低',p:6}], phone: [{n:'iPhone',p:44},{n:'华为',p:22},{n:'小米',p:13},{n:'OPPO',p:9},{n:'其他',p:12}] },
-                '开口': { region: [{n:'浙江',p:46},{n:'江苏',p:25},{n:'上海',p:20},{n:'安徽',p:5},{n:'其他',p:4}], gender: [{n:'男',p:36},{n:'女',p:64}], age: [{n:'18-24',p:28},{n:'25-34',p:42},{n:'35-44',p:20},{n:'45+',p:10}], education: [{n:'高中',p:11},{n:'大专',p:25},{n:'本科',p:50},{n:'硕士+',p:14}], marriage: [{n:'未婚',p:35},{n:'已婚',p:56},{n:'其他',p:9}], consumption: [{n:'高',p:20},{n:'中高',p:36},{n:'中等',p:30},{n:'中低',p:9},{n:'低',p:5}], phone: [{n:'iPhone',p:48},{n:'华为',p:20},{n:'小米',p:12},{n:'OPPO',p:8},{n:'其他',p:12}] },
-                '留资': { region: [{n:'浙江',p:47},{n:'江苏',p:24},{n:'上海',p:21},{n:'安徽',p:5},{n:'其他',p:3}], gender: [{n:'男',p:33},{n:'女',p:67}], age: [{n:'18-24',p:30},{n:'25-34',p:44},{n:'35-44',p:18},{n:'45+',p:8}], education: [{n:'高中',p:9},{n:'大专',p:22},{n:'本科',p:53},{n:'硕士+',p:16}], marriage: [{n:'未婚',p:32},{n:'已婚',p:58},{n:'其他',p:10}], consumption: [{n:'高',p:22},{n:'中高',p:38},{n:'中等',p:28},{n:'中低',p:8},{n:'低',p:4}], phone: [{n:'iPhone',p:52},{n:'华为',p:18},{n:'小米',p:12},{n:'OPPO',p:8},{n:'其他',p:10}] },
-                '到店': { region: [{n:'浙江',p:48},{n:'江苏',p:23},{n:'上海',p:22},{n:'安徽',p:4},{n:'其他',p:3}], gender: [{n:'男',p:31},{n:'女',p:69}], age: [{n:'18-24',p:32},{n:'25-34',p:46},{n:'35-44',p:16},{n:'45+',p:6}], education: [{n:'高中',p:7},{n:'大专',p:20},{n:'本科',p:55},{n:'硕士+',p:18}], marriage: [{n:'未婚',p:30},{n:'已婚',p:60},{n:'其他',p:10}], consumption: [{n:'高',p:24},{n:'中高',p:40},{n:'中等',p:26},{n:'中低',p:6},{n:'低',p:4}], phone: [{n:'iPhone',p:56},{n:'华为',p:16},{n:'小米',p:11},{n:'OPPO',p:7},{n:'其他',p:10}] },
-                '下单': { region: [{n:'浙江',p:50},{n:'江苏',p:22},{n:'上海',p:22},{n:'安徽',p:3},{n:'其他',p:3}], gender: [{n:'男',p:28},{n:'女',p:72}], age: [{n:'18-24',p:34},{n:'25-34',p:48},{n:'35-44',p:14},{n:'45+',p:4}], education: [{n:'高中',p:5},{n:'大专',p:18},{n:'本科',p:57},{n:'硕士+',p:20}], marriage: [{n:'未婚',p:28},{n:'已婚',p:63},{n:'其他',p:9}], consumption: [{n:'高',p:28},{n:'中高',p:42},{n:'中等',p:22},{n:'中低',p:5},{n:'低',p:3}], phone: [{n:'iPhone',p:60},{n:'华为',p:14},{n:'小米',p:10},{n:'OPPO',p:7},{n:'其他',p:9}] },
-            }
+            portraits: {}
         },
         xinan: {
             stages: [
@@ -94,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 { name: '课程签到', value: 720, trend: 12.60 },
                 { name: '下单', value: 480, trend: 16.30 },
             ],
+            cost: { total: 58600, trend: 6.80 },
             rates: [
                 { name: '点击率', value: 7.35, trend: 1.20, up: true },
                 { name: '加粉率', value: 34.72, trend: 4.50, up: true },
@@ -102,17 +89,80 @@ document.addEventListener('DOMContentLoaded', function() {
                 { name: '签到率', value: 65.45, trend: 8.40, up: false },
                 { name: '下单率', value: 66.67, trend: 14.20, up: true },
             ],
-            portraits: {
-                '曝光': { region: [{n:'四川',p:42},{n:'重庆',p:22},{n:'云南',p:18},{n:'贵州',p:12},{n:'其他',p:6}], gender: [{n:'男',p:46},{n:'女',p:54}], age: [{n:'18-24',p:20},{n:'25-34',p:34},{n:'35-44',p:30},{n:'45+',p:16}], education: [{n:'高中',p:25},{n:'大专',p:30},{n:'本科',p:36},{n:'硕士+',p:9}], marriage: [{n:'未婚',p:44},{n:'已婚',p:48},{n:'其他',p:8}], consumption: [{n:'高',p:8},{n:'中高',p:22},{n:'中等',p:40},{n:'中低',p:20},{n:'低',p:10}], phone: [{n:'iPhone',p:28},{n:'华为',p:32},{n:'小米',p:18},{n:'OPPO',p:12},{n:'其他',p:10}] },
-                '点击': { region: [{n:'四川',p:44},{n:'重庆',p:23},{n:'云南',p:16},{n:'贵州',p:11},{n:'其他',p:6}], gender: [{n:'男',p:42},{n:'女',p:58}], age: [{n:'18-24',p:22},{n:'25-34',p:38},{n:'35-44',p:26},{n:'45+',p:14}], education: [{n:'高中',p:20},{n:'大专',p:28},{n:'本科',p:40},{n:'硕士+',p:12}], marriage: [{n:'未婚',p:42},{n:'已婚',p:50},{n:'其他',p:8}], consumption: [{n:'高',p:10},{n:'中高',p:24},{n:'中等',p:38},{n:'中低',p:18},{n:'低',p:10}], phone: [{n:'iPhone',p:30},{n:'华为',p:30},{n:'小米',p:18},{n:'OPPO',p:12},{n:'其他',p:10}] },
-                '加粉': { region: [{n:'四川',p:46},{n:'重庆',p:24},{n:'云南',p:14},{n:'贵州',p:10},{n:'其他',p:6}], gender: [{n:'男',p:38},{n:'女',p:62}], age: [{n:'18-24',p:24},{n:'25-34',p:42},{n:'35-44',p:22},{n:'45+',p:12}], education: [{n:'高中',p:16},{n:'大专',p:26},{n:'本科',p:46},{n:'硕士+',p:12}], marriage: [{n:'未婚',p:38},{n:'已婚',p:54},{n:'其他',p:8}], consumption: [{n:'高',p:12},{n:'中高',p:26},{n:'中等',p:36},{n:'中低',p:16},{n:'低',p:10}], phone: [{n:'iPhone',p:34},{n:'华为',p:28},{n:'小米',p:16},{n:'OPPO',p:12},{n:'其他',p:10}] },
-                '开口': { region: [{n:'四川',p:48},{n:'重庆',p:24},{n:'云南',p:13},{n:'贵州',p:9},{n:'其他',p:6}], gender: [{n:'男',p:34},{n:'女',p:66}], age: [{n:'18-24',p:26},{n:'25-34',p:44},{n:'35-44',p:20},{n:'45+',p:10}], education: [{n:'高中',p:12},{n:'大专',p:24},{n:'本科',p:50},{n:'硕士+',p:14}], marriage: [{n:'未婚',p:35},{n:'已婚',p:56},{n:'其他',p:9}], consumption: [{n:'高',p:14},{n:'中高',p:28},{n:'中等',p:34},{n:'中低',p:14},{n:'低',p:10}], phone: [{n:'iPhone',p:38},{n:'华为',p:26},{n:'小米',p:15},{n:'OPPO',p:11},{n:'其他',p:10}] },
-                '留资': { region: [{n:'四川',p:50},{n:'重庆',p:25},{n:'云南',p:12},{n:'贵州',p:8},{n:'其他',p:5}], gender: [{n:'男',p:30},{n:'女',p:70}], age: [{n:'18-24',p:28},{n:'25-34',p:46},{n:'35-44',p:18},{n:'45+',p:8}], education: [{n:'高中',p:10},{n:'大专',p:22},{n:'本科',p:52},{n:'硕士+',p:16}], marriage: [{n:'未婚',p:32},{n:'已婚',p:58},{n:'其他',p:10}], consumption: [{n:'高',p:16},{n:'中高',p:30},{n:'中等',p:32},{n:'中低',p:13},{n:'低',p:9}], phone: [{n:'iPhone',p:42},{n:'华为',p:24},{n:'小米',p:14},{n:'OPPO',p:10},{n:'其他',p:10}] },
-                '课程签到': { region: [{n:'四川',p:52},{n:'重庆',p:24},{n:'云南',p:11},{n:'贵州',p:8},{n:'其他',p:5}], gender: [{n:'男',p:28},{n:'女',p:72}], age: [{n:'18-24',p:30},{n:'25-34',p:48},{n:'35-44',p:16},{n:'45+',p:6}], education: [{n:'高中',p:8},{n:'大专',p:20},{n:'本科',p:54},{n:'硕士+',p:18}], marriage: [{n:'未婚',p:28},{n:'已婚',p:62},{n:'其他',p:10}], consumption: [{n:'高',p:18},{n:'中高',p:32},{n:'中等',p:30},{n:'中低',p:12},{n:'低',p:8}], phone: [{n:'iPhone',p:46},{n:'华为',p:22},{n:'小米',p:13},{n:'OPPO',p:9},{n:'其他',p:10}] },
-                '下单': { region: [{n:'四川',p:54},{n:'重庆',p:23},{n:'云南',p:10},{n:'贵州',p:8},{n:'其他',p:5}], gender: [{n:'男',p:26},{n:'女',p:74}], age: [{n:'18-24',p:32},{n:'25-34',p:50},{n:'35-44',p:14},{n:'45+',p:4}], education: [{n:'高中',p:6},{n:'大专',p:18},{n:'本科',p:56},{n:'硕士+',p:20}], marriage: [{n:'未婚',p:24},{n:'已婚',p:66},{n:'其他',p:10}], consumption: [{n:'高',p:20},{n:'中高',p:36},{n:'中等',p:28},{n:'中低',p:10},{n:'低',p:6}], phone: [{n:'iPhone',p:50},{n:'华为',p:20},{n:'小米',p:12},{n:'OPPO',p:8},{n:'其他',p:10}] },
-            }
+            portraits: {}
         }
     };
+
+    // 动态生成符合严格命名和分段划分的画像数据
+    function generateMockPortraits() {
+        const stagesList = ['曝光', '点击', '加粉', '开口', '留资', '到店', '课程签到', '下单'];
+        const entitiesList = ['huanan', 'dongnan', 'xinan'];
+
+        entitiesList.forEach(ent => {
+            const ports = {};
+            stagesList.forEach((stage, sIdx) => {
+                ports[stage] = {
+                    // 1、常驻省份: 广东、湖南、广西、福建、其他
+                    region: [
+                        { n: '广东', p: Math.max(5, 30 + sIdx * 2 - (ent === 'xinan' ? 15 : 0)) },
+                        { n: '湖南', p: Math.max(5, 20 - sIdx + (ent === 'xinan' ? 5 : 0)) },
+                        { n: '广西', p: Math.max(5, 15 + sIdx - (ent === 'huanan' ? 2 : 0)) },
+                        { n: '福建', p: Math.max(5, 15 - sIdx * 2 + (ent === 'dongnan' ? 8 : 0)) },
+                        { n: '其他', p: 0 }
+                    ],
+                    // 2、性别: 男、女、其他
+                    gender: [
+                        { n: '男', p: Math.max(5, 45 - sIdx + (ent === 'huanan' ? 5 : 0)) },
+                        { n: '女', p: Math.max(5, 50 + sIdx - (ent === 'huanan' ? 3 : 0)) },
+                        { n: '其他', p: 0 }
+                    ],
+                    // 3、年龄: 0-18；18-24；24-30；30-40；40-55；55+
+                    age: [
+                        { n: '0-18', p: Math.max(1, 5 - Math.floor(sIdx / 2)) },
+                        { n: '18-24', p: Math.max(5, 15 + sIdx) },
+                        { n: '24-30', p: Math.max(5, 30 + sIdx * 2) },
+                        { n: '30-40', p: Math.max(5, 25 - sIdx) },
+                        { n: '40-55', p: Math.max(5, 20 - sIdx * 2) },
+                        { n: '55+', p: 0 }
+                    ],
+                    // 4、学历: 高中及以下；本科；硕士；博士及以上；大专；其他
+                    education: [
+                        { n: '高中及以下', p: Math.max(2, 10 - sIdx) },
+                        { n: '大专', p: Math.max(5, 25 - sIdx * 2) },
+                        { n: '本科', p: Math.max(5, 35 + sIdx * 2) },
+                        { n: '硕士', p: Math.max(2, 15 + sIdx) },
+                        { n: '博士及以上', p: Math.max(1, 5 + Math.floor(sIdx / 2)) },
+                        { n: '其他', p: 0 }
+                    ],
+                    // 5、育儿: 已育儿；未育儿
+                    parenting: [
+                        { n: '已育儿', p: Math.max(5, 40 + sIdx * 3) },
+                        { n: '未育儿', p: 0 }
+                    ],
+                    // 6、综合消费能力: 高消费、中等消费、低消费
+                    consumption: [
+                        { n: '高消费', p: Math.max(5, 20 + sIdx * 4) },
+                        { n: '中等消费', p: Math.max(5, 55 - sIdx) },
+                        { n: '低消费', p: 0 }
+                    ]
+                };
+
+                // 自动补齐各维度中“其他”或最后一项的百分比，确保和为100%
+                const dims = ['region', 'gender', 'age', 'education', 'parenting', 'consumption'];
+                dims.forEach(dim => {
+                    const list = ports[stage][dim];
+                    let sum = 0;
+                    for (let i = 0; i < list.length - 1; i++) {
+                        sum += list[i].p;
+                    }
+                    list[list.length - 1].p = Math.max(0, 100 - sum);
+                });
+            });
+            entityFunnelData[ent].portraits = ports;
+        });
+    }
+
+    generateMockPortraits();
 
     // 行业漏斗数据
     const industryFunnelData = {
@@ -184,15 +234,45 @@ document.addEventListener('DOMContentLoaded', function() {
         ],
     };
 
+    // 同行对比数据 - 各平均成本在同行中的水位排名
+    const costPeerBenchmarkData = {
+        huanan: [
+            { costName: '曝光', percentile: 30 },
+            { costName: '点击', percentile: 25 },
+            { costName: '加粉', percentile: 38 },
+            { costName: '开口', percentile: 42 },
+            { costName: '留资', percentile: 55 },
+            { costName: '到店', percentile: 60 },
+            { costName: '下单', percentile: 65 },
+        ],
+        dongnan: [
+            { costName: '曝光', percentile: 35 },
+            { costName: '点击', percentile: 28 },
+            { costName: '加粉', percentile: 45 },
+            { costName: '开口', percentile: 48 },
+            { costName: '留资', percentile: 58 },
+            { costName: '到店', percentile: 62 },
+            { costName: '下单', percentile: 68 },
+        ],
+        xinan: [
+            { costName: '曝光', percentile: 22 },
+            { costName: '点击', percentile: 18 },
+            { costName: '加粉', percentile: 32 },
+            { costName: '开口', percentile: 35 },
+            { costName: '留资', percentile: 50 },
+            { costName: '课程签到', percentile: 55 },
+            { costName: '下单', percentile: 60 },
+        ],
+    };
+
     // 画像维度配置
     const portraitDimensions = [
-        { id: 'region', name: '地域', icon: 'fa-map-marker-alt' },
+        { id: 'region', name: '常驻省份', icon: 'fa-map-marker-alt' },
         { id: 'gender', name: '性别', icon: 'fa-venus-mars' },
         { id: 'age', name: '年龄', icon: 'fa-birthday-cake' },
         { id: 'education', name: '学历', icon: 'fa-graduation-cap' },
-        { id: 'marriage', name: '婚育', icon: 'fa-ring' },
-        { id: 'consumption', name: '消费水平', icon: 'fa-shopping-bag' },
-        { id: 'phone', name: '手机机型', icon: 'fa-mobile-alt' },
+        { id: 'parenting', name: '育儿', icon: 'fa-baby' },
+        { id: 'consumption', name: '综合消费能力', icon: 'fa-shopping-bag' },
     ];
 
     // 行业与主体的映射关系
@@ -223,12 +303,14 @@ document.addEventListener('DOMContentLoaded', function() {
         tempSelectedEntities: ['huanan', 'dongnan'],
         // 临时行业选择（主体下拉卡片中）
         tempIndustry: '本地生活',
-        // 折线图转化率配置
-        trendNumerator: '下单',
-        trendDenominator: '曝光',
-        // 折线图时间范围
-        trendStartDate: '2025-05-25',
-        trendEndDate: '2025-06-24',
+        // 漏斗图 - 曝光时间范围
+        exposureStartDate: '2025-06-18',
+        exposureEndDate: '2025-06-24',
+        // 转化周期（天数）
+        conversionPeriodDays: 30,
+        conversionPeriodMode: '30', // '7', '14', '30', 'custom'
+        // 漏斗维度模式: 'quantity' 数量 | 'cost' 消耗
+        funnelMode: 'quantity',
     };
 
     // ==================== 工具函数 ====================
@@ -259,12 +341,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const merged = {
             stages: firstData.stages.map(s => ({...s})),
             rates: firstData.rates.map(r => ({...r})),
+            cost: firstData.cost ? {...firstData.cost} : { total: 0, trend: 0 },
             portraits: {},
         };
         // 合并画像数据 - 对各维度百分比按人数加权平均
         const firstPortrait = firstData.portraits || {};
         const stageNames = firstData.stages.map(s => s.name);
-        const dimKeys = ['region', 'gender', 'age', 'education', 'marriage', 'consumption', 'phone'];
+        const dimKeys = ['region', 'gender', 'age', 'education', 'parenting', 'consumption'];
         
         // 初始化画像
         stageNames.forEach(stageName => {
@@ -286,6 +369,10 @@ document.addEventListener('DOMContentLoaded', function() {
             d.stages.forEach((s, idx) => {
                 merged.stages[idx].value += s.value;
             });
+            // 合并消耗
+            if (d.cost) {
+                merged.cost.total += d.cost.total;
+            }
         }
 
         // 重新计算转化率
@@ -328,10 +415,31 @@ document.addEventListener('DOMContentLoaded', function() {
         return count > 0 ? Math.round(sum / count) : null;
     }
 
+    // 获取消耗维度同行对比水位百分位
+    function getCostPeerPercentile(stageName, entityIds) {
+        if (entityIds.length === 1) {
+            const data = costPeerBenchmarkData[entityIds[0]];
+            if (data) {
+                const item = data.find(d => d.costName === stageName);
+                return item ? item.percentile : null;
+            }
+            return null;
+        }
+        let sum = 0, count = 0;
+        entityIds.forEach(id => {
+            const data = costPeerBenchmarkData[id];
+            if (data) {
+                const item = data.find(d => d.costName === stageName);
+                if (item) { sum += item.percentile; count++; }
+            }
+        });
+        return count > 0 ? Math.round(sum / count) : null;
+    }
+
     // ==================== 渲染函数 ====================
     
     // 渲染漏斗图
-    function renderFunnelChart(containerId, funnelData, isCustomer) {
+    function renderFunnelChart(containerId, funnelData, isCustomer, mode) {
         const container = document.getElementById(containerId);
         if (!container) return;
         container.innerHTML = '';
@@ -340,12 +448,53 @@ document.addEventListener('DOMContentLoaded', function() {
         const rates = funnelData.rates;
         const maxValue = stages[0].value;
         const totalStages = stages.length;
+        const isCostMode = mode === 'cost';
 
         // 蓝色系渐变色阶（从浅到深）
         const blueStops = ['#bfdbfe','#93c5fd','#60a5fa','#3b82f6','#2563eb','#1d4ed8','#1e40af','#1e3a8a','#172554'];
         // 橙色系渐变色阶（从浅到深）
         const orangeStops = ['#fed7aa','#fdba74','#fb923c','#f97316','#ea580c','#c2410c','#9a3412','#7c2d12','#6c2710'];
-        const colorStops = isCustomer ? blueStops : orangeStops;
+        // 消耗模式用绿色系
+        const greenStops = ['#bbf7d0','#86efac','#4ade80','#22c55e','#16a34a','#15803d','#166534','#14532d','#052e16'];
+        const colorStops = isCostMode ? greenStops : (isCustomer ? blueStops : orangeStops);
+
+        // 消耗模式下，在曝光层上方加消耗层
+        if (isCostMode && isCustomer && funnelData.cost) {
+            const cost = funnelData.cost;
+            const costLayer = document.createElement('div');
+            costLayer.className = 'funnel-layer';
+            costLayer.dataset.stage = '消耗';
+            costLayer.dataset.index = '-1';
+
+            const costBar = document.createElement('div');
+            costBar.className = 'funnel-layer-bar' + (isCustomer && state.activeFunnelStage === '消耗' ? ' active' : '');
+            costBar.style.width = '100%';
+            costBar.style.background = `linear-gradient(135deg, ${greenStops[0]}, ${greenStops[1]})`;
+
+            const costTrendDir = cost.trend >= 0 ? '↑' : '↓';
+            const costTrendClass = cost.trend >= 0 ? '' : ' down';
+            costBar.innerHTML = `
+                <div class="funnel-bar-top">
+                    <span class="funnel-bar-name">总消耗</span>
+                </div>
+                <div class="funnel-bar-bottom">
+                    <span class="funnel-bar-value">¥${formatNumber(cost.total)}</span>
+                    <span class="funnel-bar-trend${costTrendClass}">${costTrendDir} ${Math.abs(cost.trend).toFixed(2)}%</span>
+                </div>
+            `;
+
+            if (isCustomer) {
+                costBar.addEventListener('click', function() {
+                    setActiveStage('消耗');
+                });
+                costBar.addEventListener('mouseenter', function() {
+                    setActiveStage('消耗');
+                });
+            }
+
+            costLayer.appendChild(costBar);
+            container.appendChild(costLayer);
+        }
 
         stages.forEach((stage, idx) => {
             // 漏斗宽度策略：纯均匀递减，确保每层明显窄于上一层
@@ -358,6 +507,31 @@ document.addEventListener('DOMContentLoaded', function() {
             const colorNext = Math.min(idx + 1, colorStops.length - 1);
             const bgColor = `linear-gradient(135deg, ${colorStops[colorIdx]}, ${colorStops[colorNext]})`;
 
+            // 消耗模式下，替换指标名称和数值
+            let displayName = stage.name;
+            let displayValue = formatNumber(stage.value);
+            let displayTrend = stage.trend;
+
+            if (isCostMode && funnelData.cost) {
+                const avgCost = stage.value > 0 ? funnelData.cost.total / stage.value : 0;
+                displayName = '平均' + stage.name + '成本';
+                displayValue = '¥' + avgCost.toFixed(2);
+                displayTrend = parseFloat((Math.random() * 15 + 2).toFixed(2));
+            }
+
+            const trendDir = displayTrend >= 0 ? '↑' : '↓';
+            const trendClass = displayTrend >= 0 ? '' : ' down';
+
+            // 消耗模式下计算同行对比标签
+            let costPeerHtml = '';
+            if (isCostMode && isCustomer) {
+                const costPct = getCostPeerPercentile(stage.name, state.selectedEntities);
+                if (costPct !== null) {
+                    const peerClass = costPct <= 30 ? 'peer-low' : (costPct <= 60 ? 'peer-mid' : 'peer-high');
+                    costPeerHtml = `<span class="funnel-bar-cost-peer ${peerClass}">位于同行平均${stage.name}成本水位的前${100 - costPct}%</span>`;
+                }
+            }
+
             const layer = document.createElement('div');
             layer.className = 'funnel-layer';
             layer.dataset.stage = stage.name;
@@ -368,15 +542,14 @@ document.addEventListener('DOMContentLoaded', function() {
             bar.style.width = widthPct + '%';
             bar.style.background = bgColor;
 
-            const trendDir = stage.trend >= 0 ? '↑' : '↓';
-            const trendClass = stage.trend >= 0 ? '' : ' down';
             bar.innerHTML = `
                 <div class="funnel-bar-top">
-                    <span class="funnel-bar-name">${stage.name}</span>
-                    <span class="funnel-bar-trend${trendClass}">${trendDir} ${Math.abs(stage.trend).toFixed(2)}%</span>
+                    <span class="funnel-bar-name">${displayName}</span>
                 </div>
                 <div class="funnel-bar-bottom">
-                    <span class="funnel-bar-value">${formatNumber(stage.value)}</span>
+                    <span class="funnel-bar-value">${displayValue}</span>
+                    <span class="funnel-bar-trend${trendClass}">${trendDir} ${Math.abs(displayTrend).toFixed(2)}%</span>
+                    ${costPeerHtml}
                 </div>
             `;
 
@@ -396,14 +569,14 @@ document.addEventListener('DOMContentLoaded', function() {
             if (idx < rates.length) {
                 const rate = rates[idx];
                 const rateDiv = document.createElement('div');
-                rate.className = 'funnel-rate';
+                rateDiv.className = 'funnel-rate';
                 
                 const trendDirR = rate.up ? '↑' : '↓';
                 const trendClassR = rate.up ? ' up' : ' down';
 
-                // 客户漏斗增加同行对比
+                // 客户漏斗增加同行对比（消耗模式下不展示同行对比）
                 let peerHtml = '';
-                if (isCustomer) {
+                if (isCustomer && !isCostMode) {
                     const percentile = getPeerPercentile(rate.name, state.selectedEntities);
                     if (percentile !== null) {
                         const peerClass = percentile <= 30 ? 'peer-low' : (percentile <= 60 ? 'peer-mid' : 'peer-high');
@@ -424,85 +597,142 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ==================== 折线图（转化率变化趋势） ====================
+    // ==================== 折线图（趋势变化） ====================
 
-    // 生成每日转化率数据
-    function generateTrendData(entityIds, numerator, denominator, startDate, endDate) {
-        const start = new Date(startDate);
-        const end = new Date(endDate);
-        const funnelData = getMergedFunnelData(entityIds);
-        const numBase = funnelData.stages.find(s => s.name === numerator);
-        const denBase = funnelData.stages.find(s => s.name === denominator);
-        if (!numBase || !denBase) return [];
+    // 辅助函数：日期加天数
+    function addDays(dateStr, days) {
+        const d = new Date(dateStr);
+        d.setDate(d.getDate() + days);
+        return d.toISOString().slice(0, 10);
+    }
 
-        const baseRate = denBase.value > 0 ? numBase.value / denBase.value : 0;
+    // 辅助函数：格式化日期为 "M.D"
+    function fmtShortDate(dateStr) {
+        const d = new Date(dateStr);
+        return (d.getMonth() + 1) + '.' + d.getDate();
+    }
+
+    // 辅助函数：格式化日期为 "YYYY.M.D"
+    function fmtFullDate(dateStr) {
+        const d = new Date(dateStr);
+        return d.getFullYear() + '.' + (d.getMonth() + 1) + '.' + d.getDate();
+    }
+
+    // 生成6个周期的趋势数据
+    // quantity模式: 下单数/曝光数的转化率趋势
+    // cost模式: 平均XX成本的趋势
+    function generatePeriodTrendData(mode, stageName) {
+        const startBase = state.exposureStartDate;
+        const endBase = state.exposureEndDate;
+
+        const startD = new Date(startBase);
+        const endD = new Date(endBase);
+        const diffTime = Math.abs(endD - startD);
+        const periodLength = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+        const funnelData = getMergedFunnelData(state.selectedEntities);
         const points = [];
-        const cur = new Date(start);
-        let seed = entityIds.join('').length;
-        while (cur <= end) {
-            seed = (seed * 9301 + 49297) % 233280;
-            const rnd = (seed / 233280) - 0.5; // -0.5 ~ 0.5
-            const dayFactor = Math.sin((cur - start) / (end - start) * Math.PI * 2.5);
-            const noise = rnd * baseRate * 0.12;
-            const trend = dayFactor * baseRate * 0.06;
-            const rate = Math.max(0, baseRate + trend + noise);
-            const dateStr = cur.toISOString().slice(0, 10);
-            points.push({ date: dateStr, rate: parseFloat((rate * 100).toFixed(2)) });
-            cur.setDate(cur.getDate() + 1);
+
+        if (mode === 'quantity') {
+            // 计算当前下单数/曝光数转化率
+            const numStage = funnelData.stages.find(s => s.name === '下单');
+            const denStage = funnelData.stages.find(s => s.name === '曝光');
+            const baseRate = (numStage && denStage && denStage.value > 0)
+                ? numStage.value / denStage.value * 100 : 0;
+
+            let seed = state.selectedEntities.join('').length + 7;
+            for (let i = 0; i < 6; i++) {
+                // 从最新到最旧：偏移 i * periodLength 天
+                const periodStart = addDays(startBase, -i * periodLength);
+                const periodEnd = addDays(endBase, -i * periodLength);
+                const label = fmtFullDate(periodStart) + '-' + fmtFullDate(periodEnd);
+
+                seed = (seed * 9301 + 49297) % 233280;
+                const rnd = (seed / 233280) - 0.5;
+                const trend = Math.sin(i * 0.8) * baseRate * 0.15;
+                const noise = rnd * baseRate * 0.1;
+                const rate = Math.max(0, baseRate + trend + noise);
+
+                points.unshift({
+                    label: label,
+                    value: parseFloat(rate.toFixed(2)),
+                });
+            }
+        } else if (mode === 'cost' && stageName && funnelData.cost) {
+            // 计算基础成本值：如果是总消耗层，直接为 cost.total；否则为 cost.total / 指标数
+            let baseCost = 0;
+            if (stageName === '消耗') {
+                baseCost = funnelData.cost.total;
+            } else {
+                const stage = funnelData.stages.find(s => s.name === stageName);
+                baseCost = (stage && stage.value > 0)
+                    ? funnelData.cost.total / stage.value : 0;
+            }
+
+            let seed = state.selectedEntities.join('').length + stageName.length;
+            for (let i = 0; i < 6; i++) {
+                const periodStart = addDays(startBase, -i * periodLength);
+                const periodEnd = addDays(endBase, -i * periodLength);
+                const label = fmtFullDate(periodStart) + '-' + fmtFullDate(periodEnd);
+
+                seed = (seed * 9301 + 49297) % 233280;
+                const rnd = (seed / 233280) - 0.5;
+                const trend = Math.sin(i * 0.9) * baseCost * 0.12;
+                const noise = rnd * baseCost * 0.08;
+                const cost = Math.max(0, baseCost + trend + noise);
+
+                points.unshift({
+                    label: label,
+                    value: parseFloat(cost.toFixed(2)),
+                });
+            }
         }
+
         return points;
     }
 
-    // 渲染折线图 SVG
-    function renderTrendChart() {
-        const container = document.getElementById('trend-chart-body');
+    // 渲染数量/转化率趋势图 SVG
+    function renderQuantityTrendChart() {
+        const container = document.getElementById('quantity-trend-chart-body');
         if (!container) return;
 
-        const data = generateTrendData(
-            state.selectedEntities,
-            state.trendNumerator,
-            state.trendDenominator,
-            state.trendStartDate,
-            state.trendEndDate
-        );
+        const rateLabel = document.getElementById('trend-rate-label');
+        const configBtn = document.getElementById('trend-config-btn');
+
+        const data = generatePeriodTrendData('quantity');
+        const yUnit = '%';
+        const tooltipSuffix = '%';
+
+        if (rateLabel) {
+            // 支持配置的分子分母
+            rateLabel.textContent = state.trendNumerator + '数/' + state.trendDenominator + '数';
+            rateLabel.style.background = 'rgba(245,158,11,0.1)';
+            rateLabel.style.color = '#f59e0b';
+        }
+
         if (data.length === 0) {
             container.innerHTML = '<div style="color:var(--text-muted);padding:20px;text-align:center;">暂无数据</div>';
             return;
         }
 
-        // 更新标签
-        const rateLabel = document.getElementById('trend-rate-label');
-        if (rateLabel) {
-            rateLabel.textContent = state.trendNumerator + '数/' + state.trendDenominator + '数';
-        }
-        const dateLabel = document.getElementById('trend-date-label');
-        if (dateLabel) {
-            dateLabel.textContent = state.trendStartDate + ' ~ ' + state.trendEndDate;
-        }
-
         const W = container.clientWidth || 460;
         const H = Math.max(160, (container.parentElement?.clientHeight || 260) - 60);
-        const padL = 50, padR = 16, padT = 16, padB = 36;
+        const padL = 50, padR = 16, padT = 16, padB = 48;
         const plotW = W - padL - padR;
         const plotH = H - padT - padB;
 
-        const rates = data.map(d => d.rate);
-        const minR = Math.floor(Math.min(...rates) - 2);
-        const maxR = Math.ceil(Math.max(...rates) + 2);
+        const values = data.map(d => d.value);
+        const minR = 0;
+        const maxR = 2;
         const rangeR = maxR - minR || 1;
 
-        // 坐标转换
         const xScale = (i) => padL + (i / (data.length - 1)) * plotW;
         const yScale = (v) => padT + plotH - ((v - minR) / rangeR) * plotH;
 
-        // 折线路径
-        const linePath = data.map((d, i) => `${i === 0 ? 'M' : 'L'}${xScale(i).toFixed(1)},${yScale(d.rate).toFixed(1)}`).join(' ');
-
-        // 面积路径
+        const linePath = data.map((d, i) => `${i === 0 ? 'M' : 'L'}${xScale(i).toFixed(1)},${yScale(d.value).toFixed(1)}`).join(' ');
         const areaPath = linePath + ` L${xScale(data.length - 1).toFixed(1)},${(padT + plotH).toFixed(1)} L${xScale(0).toFixed(1)},${(padT + plotH).toFixed(1)} Z`;
 
-        // Y轴刻度
-        const yTicks = 5;
+        const yTicks = 4;
         let yTickHtml = '';
         for (let i = 0; i <= yTicks; i++) {
             const val = minR + (rangeR * i / yTicks);
@@ -511,45 +741,40 @@ document.addEventListener('DOMContentLoaded', function() {
             yTickHtml += `<text x="${padL - 6}" y="${y + 4}" text-anchor="end" fill="#9ca3af" font-size="10">${val.toFixed(1)}%</text>`;
         }
 
-        // X轴日期标签（间隔显示）
-        const xLabelInterval = Math.max(1, Math.floor(data.length / 6));
         let xTickHtml = '';
         data.forEach((d, i) => {
-            if (i % xLabelInterval === 0 || i === data.length - 1) {
-                const x = xScale(i);
-                const label = d.date.slice(5); // MM-DD
-                xTickHtml += `<text x="${x}" y="${H - padB + 16}" text-anchor="middle" fill="#9ca3af" font-size="9">${label}</text>`;
-            }
+            const x = xScale(i);
+            xTickHtml += `<text x="${x}" y="${H - padB + 14}" text-anchor="end" fill="#9ca3af" font-size="8" transform="rotate(-35,${x},${H - padB + 14})">${d.label}</text>`;
         });
 
-        // 数据点
-        let dotsHtml = data.map((d, i) => 
-            `<circle cx="${xScale(i).toFixed(1)}" cy="${yScale(d.rate).toFixed(1)}" r="3" fill="#2563eb" stroke="white" stroke-width="1.5" class="trend-dot" data-date="${d.date}" data-rate="${d.rate}"/>`
+        const mainColor = '#2563eb';
+        const mainColorLight = '#3b82f6';
+        const areaGradId = 'trendAreaGrad';
+
+        let dotsHtml = data.map((d, i) =>
+            `<circle cx="${xScale(i).toFixed(1)}" cy="${yScale(d.value).toFixed(1)}" r="3" fill="${mainColor}" stroke="white" stroke-width="1.5" class="trend-dot" data-label="${d.label}" data-value="${d.value}${tooltipSuffix}"/>`
         ).join('');
 
         const svg = `
             <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" class="trend-svg">
                 <defs>
-                    <linearGradient id="trendAreaGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2"/>
-                        <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.02"/>
+                    <linearGradient id="${areaGradId}" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="${mainColorLight}" stop-opacity="0.2"/>
+                        <stop offset="100%" stop-color="${mainColorLight}" stop-opacity="0.02"/>
                     </linearGradient>
                 </defs>
                 ${yTickHtml}
                 ${xTickHtml}
-                <path d="${areaPath}" fill="url(#trendAreaGrad)"/>
-                <path d="${linePath}" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="${areaPath}" fill="url(#${areaGradId})"/>
+                <path d="${linePath}" fill="none" stroke="${mainColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 ${dotsHtml}
             </svg>
         `;
         container.innerHTML = svg;
 
-        // 添加 tooltip
         container.querySelectorAll('.trend-dot').forEach(dot => {
             dot.addEventListener('mouseenter', function(e) {
-                const date = this.dataset.date;
-                const rate = this.dataset.rate;
-                showTrendTooltip(e, date, rate);
+                showTrendTooltip(e, this.dataset.label, this.dataset.value);
             });
             dot.addEventListener('mouseleave', function() {
                 hideTrendTooltip();
@@ -557,12 +782,113 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function showTrendTooltip(e, date, rate) {
+    // 渲染消耗变化趋势图 SVG
+    function renderCostTrendChart() {
+        const container = document.getElementById('cost-trend-chart-body');
+        if (!container) return;
+
+        const trendTitleEl = document.querySelector('#cost-trend-panel .trend-chart-title span:nth-child(2)');
+        const rateLabel = document.getElementById('cost-trend-rate-label');
+
+        const stageName = state.activeFunnelStage || '消耗';
+        const data = generatePeriodTrendData('cost', stageName);
+        const yUnit = '元';
+        const tooltipSuffix = '元';
+
+        // 更新标题和计算公式标签
+        let formulaText = '';
+        if (stageName === '消耗') {
+            if (trendTitleEl) trendTitleEl.textContent = '总消耗变化趋势图';
+            formulaText = '曝光总消耗';
+        } else {
+            if (trendTitleEl) trendTitleEl.textContent = '平均' + stageName + '成本变化趋势图';
+            formulaText = '曝光总消耗/' + stageName + '数';
+        }
+        if (rateLabel) rateLabel.textContent = formulaText;
+
+        if (data.length === 0) {
+            container.innerHTML = '<div style="color:var(--text-muted);padding:20px;text-align:center;">暂无数据</div>';
+            return;
+        }
+
+        const W = container.clientWidth || 460;
+        const H = Math.max(160, (container.parentElement?.clientHeight || 260) - 60);
+        const padL = 50, padR = 16, padT = 16, padB = 48;
+        const plotW = W - padL - padR;
+        const plotH = H - padT - padB;
+
+        const values = data.map(d => d.value);
+
+        // 消耗模式：动态范围，下方留30%余量，上方留30%余量
+        const dataMin = Math.min(...values);
+        const dataMax = Math.max(...values);
+        const range = dataMax - dataMin || dataMax * 0.2 || 1;
+        const minR = Math.max(0, dataMin - range * 0.3);
+        const maxR = dataMax + range * 0.3;
+        const rangeR = maxR - minR || 1;
+
+        const xScale = (i) => padL + (i / (data.length - 1)) * plotW;
+        const yScale = (v) => padT + plotH - ((v - minR) / rangeR) * plotH;
+
+        const linePath = data.map((d, i) => `${i === 0 ? 'M' : 'L'}${xScale(i).toFixed(1)},${yScale(d.value).toFixed(1)}`).join(' ');
+        const areaPath = linePath + ` L${xScale(data.length - 1).toFixed(1)},${(padT + plotH).toFixed(1)} L${xScale(0).toFixed(1)},${(padT + plotH).toFixed(1)} Z`;
+
+        const yTicks = 4;
+        let yTickHtml = '';
+        for (let i = 0; i <= yTicks; i++) {
+            const val = minR + (rangeR * i / yTicks);
+            const y = yScale(val);
+            yTickHtml += `<line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="#f0f0f0" stroke-width="1"/>`;
+            yTickHtml += `<text x="${padL - 6}" y="${y + 4}" text-anchor="end" fill="#9ca3af" font-size="10">${val.toFixed(1)}${yUnit}</text>`;
+        }
+
+        let xTickHtml = '';
+        data.forEach((d, i) => {
+            const x = xScale(i);
+            xTickHtml += `<text x="${x}" y="${H - padB + 14}" text-anchor="end" fill="#9ca3af" font-size="8" transform="rotate(-35,${x},${H - padB + 14})">${d.label}</text>`;
+        });
+
+        const mainColor = '#16a34a';
+        const mainColorLight = '#22c55e';
+        const areaGradId = 'trendAreaGradCost';
+
+        let dotsHtml = data.map((d, i) =>
+            `<circle cx="${xScale(i).toFixed(1)}" cy="${yScale(d.value).toFixed(1)}" r="3" fill="${mainColor}" stroke="white" stroke-width="1.5" class="trend-dot" data-label="${d.label}" data-value="${d.value}${tooltipSuffix}"/>`
+        ).join('');
+
+        const svg = `
+            <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" class="trend-svg">
+                <defs>
+                    <linearGradient id="${areaGradId}" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="${mainColorLight}" stop-opacity="0.2"/>
+                        <stop offset="100%" stop-color="${mainColorLight}" stop-opacity="0.02"/>
+                    </linearGradient>
+                </defs>
+                ${yTickHtml}
+                ${xTickHtml}
+                <path d="${areaPath}" fill="url(#${areaGradId})"/>
+                <path d="${linePath}" fill="none" stroke="${mainColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                ${dotsHtml}
+            </svg>
+        `;
+        container.innerHTML = svg;
+
+        container.querySelectorAll('.trend-dot').forEach(dot => {
+            dot.addEventListener('mouseenter', function(e) {
+                showTrendTooltip(e, this.dataset.label, this.dataset.value);
+            });
+            dot.addEventListener('mouseleave', function() {
+                hideTrendTooltip();
+            });
+        });
+    }
+
+    function showTrendTooltip(e, label, value) {
         hideTrendTooltip();
         const tip = document.createElement('div');
         tip.className = 'trend-tooltip';
         tip.id = 'trend-tooltip';
-        tip.innerHTML = `<div class="trend-tooltip-date">${date}</div><div class="trend-tooltip-rate">${rate}%</div>`;
+        tip.innerHTML = `<div class="trend-tooltip-date">${label}</div><div class="trend-tooltip-rate">${value}</div>`;
         document.body.appendChild(tip);
         const rect = e.target.getBoundingClientRect();
         tip.style.left = (rect.left + rect.width / 2 - tip.offsetWidth / 2) + 'px';
@@ -579,13 +905,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const grid = document.getElementById('portrait-grid');
         const label = document.getElementById('portrait-stage-label');
         const count = document.getElementById('portrait-count');
-        const conclusionBody = document.getElementById('portrait-conclusion-body');
         if (!grid || !data) return;
 
         const stageData = data.portraits ? data.portraits[stageName] : null;
         if (!stageData) {
             grid.innerHTML = '<div style="color:var(--text-muted);padding:20px;">暂无画像数据</div>';
-            if (conclusionBody) conclusionBody.innerHTML = '';
             return;
         }
 
@@ -596,43 +920,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const stage = funnelData.stages.find(s => s.name === stageName);
         count.textContent = stage ? `共 ${formatNumber(stage.value)} 人` : '';
 
-        // ==================== 生成画像结论 ====================
-        if (conclusionBody) {
-            // 从所有维度中收集 (特征名, 百分比, 维度名) 并按百分比排序取 TOP3
-            const allFeatures = [];
-            const dimNames = { region: '地域', gender: '性别', age: '年龄', education: '学历', marriage: '婚育', consumption: '消费能力', phone: '手机品牌' };
-            const dimKeys = ['region', 'gender', 'age', 'education', 'marriage', 'consumption', 'phone'];
-            dimKeys.forEach(dimId => {
-                const items = stageData[dimId];
-                if (!items) return;
-                // 只取每个维度的第一项（最高占比）
-                const top = items[0];
-                if (top) {
-                    allFeatures.push({
-                        name: top.n,
-                        pct: top.p,
-                        dimId: dimId,
-                        dimName: dimNames[dimId] || dimId
-                    });
-                }
-            });
-            // 按百分比降序排序
-            allFeatures.sort((a, b) => b.pct - a.pct);
-            const top3 = allFeatures.slice(0, 3);
-
-            // 生成重合度（模拟数据，基于 TOP1 占比推算）
-            const overlapPct = Math.min(95, Math.round(top3[0]?.pct * 2.1 + 12 + Math.random() * 5));
-
-            if (top3.length >= 3) {
-                conclusionBody.innerHTML = `当前下单TOP3人群特征是：<span class="conclusion-tag">${top3[0].name}</span>（占<span class="conclusion-pct">${top3[0].pct}%</span>）、<span class="conclusion-tag">${top3[1].name}</span>（占<span class="conclusion-pct">${top3[1].pct}%</span>）、<span class="conclusion-tag">${top3[2].name}</span>（占<span class="conclusion-pct">${top3[2].pct}%</span>），和您历史投放产品的受众人群重合度为<span class="conclusion-overlap">${overlapPct}%</span>，投放人群重合度高的产品有利于商品转化，<span class="conclusion-advice">建议您投放</span>`;
-            } else if (top3.length > 0) {
-                const topStr = top3.map(f => `<span class="conclusion-tag">${f.name}</span>（占<span class="conclusion-pct">${f.pct}%</span>）`).join('、');
-                conclusionBody.innerHTML = `当前下单TOP人群特征是：${topStr}，和您历史投放产品的受众人群重合度为<span class="conclusion-overlap">${overlapPct}%</span>，投放人群重合度高的产品有利于商品转化，<span class="conclusion-advice">建议您投放</span>`;
-            }
-        }
-
         const dims = state.selectedPortraitDims;
-        const colorMap = { region: 'blue', gender: 'green', age: 'orange', education: 'purple', marriage: 'cyan', consumption: 'rose', phone: 'indigo' };
+        const colorMap = { region: 'blue', gender: 'green', age: 'orange', education: 'purple', parenting: 'cyan', consumption: 'rose' };
         const iconMap = {};
         portraitDimensions.forEach(d => { iconMap[d.id] = d.icon; });
 
@@ -836,7 +1125,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 更新行业信息
     function updateIndustryInfo() {
-        document.getElementById('funnel-industry-info').textContent = '时间范围: 2025-06-18 至 2025-06-24';
+        document.getElementById('funnel-industry-info').textContent = 
+            '曝光: ' + state.exposureStartDate + ' ~ ' + state.exposureEndDate + 
+            ' | 转化周期: ' + state.conversionPeriodDays + '天';
     }
 
     // 更新主体选择器标签
@@ -853,13 +1144,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // 设置活跃漏斗层
     function setActiveStage(stageName) {
         state.activeFunnelStage = stageName;
-        // 更新客户漏斗的 active 样式
-        document.querySelectorAll('#customer-funnel-chart .funnel-layer-bar').forEach(bar => {
+        // 更新两边漏斗的 active 样式
+        document.querySelectorAll('.funnel-layer-bar').forEach(bar => {
             bar.classList.toggle('active', bar.closest('.funnel-layer').dataset.stage === stageName);
         });
-        // 更新画像
-        const data = getMergedFunnelData(state.selectedEntities);
-        renderPortrait(stageName, data);
+        // 消耗趋势图跟随hover的漏斗层
+        renderCostTrendChart();
     }
 
     // 显示行业不同报错
@@ -879,12 +1169,17 @@ document.addEventListener('DOMContentLoaded', function() {
             state.activeFunnelStage = funnelData.stages[funnelData.stages.length - 1].name;
         }
 
-        renderFunnelChart('customer-funnel-chart', funnelData, true);
-        renderPortrait(state.activeFunnelStage, funnelData);
+        // 更新时间选择器标签
+        const expLabel = document.getElementById('exposure-time-label');
+        if (expLabel) expLabel.textContent = state.exposureStartDate + ' ~ ' + state.exposureEndDate;
+
+        renderFunnelChart('customer-funnel-chart', funnelData, true, 'quantity');
+        renderFunnelChart('cost-funnel-chart', funnelData, true, 'cost');
         updateConversionRate();
         updateIndustryInfo();
         updateEntitySelectorLabel();
-        renderTrendChart();
+        renderQuantityTrendChart();
+        renderCostTrendChart();
     }
 
     // ==================== 事件绑定 ====================
@@ -1084,170 +1379,131 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- 折线图配置弹窗 ---
-    const trendConfigBtn = document.getElementById('trend-config-btn');
-    const trendConfigModal = document.getElementById('trend-config-modal');
-    const trendConfigClose = document.getElementById('trend-config-close');
-    const trendCancelBtn = document.getElementById('trend-cancel-btn');
-    const trendConfirmBtn = document.getElementById('trend-confirm-btn');
-    const trendNumeratorSel = document.getElementById('trend-numerator');
-    const trendDenominatorSel = document.getElementById('trend-denominator');
-
-    if (trendConfigBtn) {
-        trendConfigBtn.addEventListener('click', function() {
-            const industry = getCurrentIndustry();
-            const stages = getStagesForIndustry(industry);
-            trendNumeratorSel.innerHTML = stages.map(s =>
-                `<option value="${s}" ${s === state.trendNumerator ? 'selected' : ''}>${s}数</option>`
-            ).join('');
-            trendDenominatorSel.innerHTML = stages.map(s =>
-                `<option value="${s}" ${s === state.trendDenominator ? 'selected' : ''}>${s}数</option>`
-            ).join('');
-            trendConfigModal.classList.add('open');
+    // 漏斗图时间选择器 - 曝光时间范围
+    const exposureTimePicker = document.getElementById('exposure-time-picker');
+    if (exposureTimePicker) {
+        exposureTimePicker.addEventListener('click', function() {
+            showFunnelTimePicker('exposure');
         });
     }
 
-    if (trendConfigClose) {
-        trendConfigClose.addEventListener('click', function() {
-            trendConfigModal.classList.remove('open');
-        });
-    }
-
-    if (trendCancelBtn) {
-        trendCancelBtn.addEventListener('click', function() {
-            trendConfigModal.classList.remove('open');
-        });
-    }
-
-    if (trendConfirmBtn) {
-        trendConfirmBtn.addEventListener('click', function() {
-            state.trendNumerator = trendNumeratorSel.value;
-            state.trendDenominator = trendDenominatorSel.value;
-            trendConfigModal.classList.remove('open');
-            renderTrendChart();
-        });
-    }
-
-    if (trendConfigModal) {
-        trendConfigModal.addEventListener('click', function(e) {
-            if (e.target === trendConfigModal) {
-                trendConfigModal.classList.remove('open');
-            }
-        });
-    }
-
-    // 折线图日期范围选择
-    const trendDateRange = document.getElementById('trend-date-range');
-    if (trendDateRange) {
-        trendDateRange.addEventListener('click', function() {
-            showTrendDatePicker();
-        });
-    }
-
-    function showTrendDatePicker() {
-        // 简易日期选择弹窗
-        let existing = document.getElementById('trend-date-picker-modal');
+    function showFunnelTimePicker(type) {
+        let existing = document.getElementById('funnel-date-picker-modal');
         if (existing) existing.remove();
 
+        const isExposure = type === 'exposure';
+        const title = isExposure ? '选择曝光时间范围' : '选择观察时间范围';
+        const startVal = isExposure ? state.exposureStartDate : '';
+        const endVal = isExposure ? state.exposureEndDate : '';
+
         const modal = document.createElement('div');
-        modal.id = 'trend-date-picker-modal';
+        modal.id = 'funnel-date-picker-modal';
         modal.className = 'conversion-config-modal open';
         modal.innerHTML = `
-            <div class="conversion-config-content" style="width:320px;">
+            <div class="conversion-config-content" style="width:360px;">
                 <div class="conversion-config-title">
-                    <span>选择时间范围</span>
-                    <button class="conversion-config-close" id="trend-date-close"><i class="fas fa-times"></i></button>
+                    <span>${title}</span>
+                    <button class="conversion-config-close" id="funnel-date-close"><i class="fas fa-times"></i></button>
                 </div>
                 <div class="conversion-config-body">
                     <div class="conversion-config-row">
                         <label>开始</label>
-                        <input type="date" id="trend-start-input" class="conversion-select" value="${state.trendStartDate}">
+                        <input type="date" id="funnel-date-start" class="conversion-select" value="${startVal}">
                     </div>
                     <div class="conversion-config-row">
                         <label>结束</label>
-                        <input type="date" id="trend-end-input" class="conversion-select" value="${state.trendEndDate}">
+                        <input type="date" id="funnel-date-end" class="conversion-select" value="${endVal}">
                     </div>
                 </div>
                 <div class="conversion-config-footer">
-                    <button class="entity-btn entity-btn-cancel" id="trend-date-cancel-btn">取消</button>
-                    <button class="entity-btn entity-btn-confirm" id="trend-date-confirm-btn">确定</button>
+                    <button class="entity-btn entity-btn-cancel" id="funnel-date-cancel-btn">取消</button>
+                    <button class="entity-btn entity-btn-confirm" id="funnel-date-confirm-btn">确定</button>
                 </div>
             </div>
         `;
         document.body.appendChild(modal);
 
-        document.getElementById('trend-date-close').addEventListener('click', () => modal.remove());
-        document.getElementById('trend-date-cancel-btn').addEventListener('click', () => modal.remove());
+        document.getElementById('funnel-date-close').addEventListener('click', () => modal.remove());
+        document.getElementById('funnel-date-cancel-btn').addEventListener('click', () => modal.remove());
         modal.addEventListener('click', function(e) {
             if (e.target === modal) modal.remove();
         });
-        document.getElementById('trend-date-confirm-btn').addEventListener('click', function() {
-            const start = document.getElementById('trend-start-input').value;
-            const end = document.getElementById('trend-end-input').value;
+        document.getElementById('funnel-date-confirm-btn').addEventListener('click', function() {
+            const start = document.getElementById('funnel-date-start').value;
+            const end = document.getElementById('funnel-date-end').value;
             if (start && end && start <= end) {
-                state.trendStartDate = start;
-                state.trendEndDate = end;
-                renderTrendChart();
+                if (isExposure) {
+                    state.exposureStartDate = start;
+                    state.exposureEndDate = end;
+                }
+                refreshFunnelSection();
             }
             modal.remove();
         });
     }
 
-    // ==================== 通用功能（保留原有） ====================
+    // ==================== 漏斗维度切换 ====================
+    const funnelModeToggle = document.getElementById('funnel-mode-toggle');
+    if (funnelModeToggle) {
+        funnelModeToggle.addEventListener('click', function(e) {
+            const btn = e.target.closest('.funnel-mode-btn');
+            if (!btn) return;
+            const mode = btn.dataset.mode;
+            if (mode === state.funnelMode) return;
+            state.funnelMode = mode;
+            funnelModeToggle.querySelectorAll('.funnel-mode-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            refreshFunnelSection();
+        });
+    }
 
-    // 日期筛选切换
-    const dateBtns = document.querySelectorAll('.date-btn');
-    dateBtns.forEach(btn => {
+    // ==================== 转化周期选择器 ====================
+    const periodBtns = document.querySelectorAll('.period-btn');
+    const periodCustomInput = document.getElementById('period-custom-input');
+    const periodCustomDays = document.getElementById('period-custom-days');
+    const periodError = document.getElementById('period-error');
+
+    periodBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            dateBtns.forEach(b => b.classList.remove('active'));
+            const days = this.dataset.days;
+            periodBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-            const range = this.dataset.range;
-            updateDateRange(range);
+
+            if (days === 'custom') {
+                periodCustomInput.style.display = 'flex';
+                periodError.textContent = '';
+                // 不立即更新，等待用户输入
+            } else {
+                periodCustomInput.style.display = 'none';
+                periodError.textContent = '';
+                state.conversionPeriodMode = days;
+                state.conversionPeriodDays = parseInt(days);
+                refreshFunnelSection();
+            }
         });
     });
 
-    function updateDateRange(range) {
-        const datePicker = document.querySelector('.date-picker span');
-        const today = new Date('2025-07-07');
-        let startDate, endDate;
-        
-        switch(range) {
-            case 'yesterday':
-                startDate = new Date(today);
-                startDate.setDate(startDate.getDate() - 1);
-                endDate = new Date(startDate);
-                break;
-            case '7days':
-                startDate = new Date(today);
-                startDate.setDate(startDate.getDate() - 6);
-                endDate = new Date(today);
-                break;
-            case '30days':
-                startDate = new Date(today);
-                startDate.setDate(startDate.getDate() - 29);
-                endDate = new Date(today);
-                break;
-        }
-        
-        const formatDate = (d) => {
-            return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-        };
-        
-        datePicker.textContent = `${formatDate(startDate)} ~ ${formatDate(endDate)}`;
-    }
-
-    // 刷新数据按钮
-    const refreshBtn = document.querySelector('.btn-refresh');
-    if (refreshBtn) {
-        refreshBtn.addEventListener('click', function() {
-            const icon = this.querySelector('i');
-            icon.style.animation = 'spin 1s linear';
-            setTimeout(() => {
-                icon.style.animation = '';
-                showToast('数据已刷新');
-            }, 1000);
+    if (periodCustomDays) {
+        periodCustomDays.addEventListener('input', function() {
+            const val = parseInt(this.value);
+            if (this.value && val > 90) {
+                periodError.textContent = '转化周期过长，请输入90天以内的数';
+                periodError.style.color = 'var(--danger)';
+            } else if (this.value && val < 1) {
+                periodError.textContent = '请输入有效的天数';
+                periodError.style.color = 'var(--danger)';
+            } else {
+                periodError.textContent = '';
+                if (this.value && val >= 1 && val <= 90) {
+                    state.conversionPeriodMode = 'custom';
+                    state.conversionPeriodDays = val;
+                    refreshFunnelSection();
+                }
+            }
         });
     }
+
+    // ==================== 通用功能（保留原有） ====================
 
     // 侧边栏导航切换
     const sidebarItems = document.querySelectorAll('.sidebar-item');
@@ -1266,24 +1522,6 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             topMenuItems.forEach(i => i.classList.remove('active'));
             this.classList.add('active');
-        });
-    });
-
-    // 洞察卡片点击
-    const insightCards = document.querySelectorAll('.insight-card');
-    insightCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const title = this.querySelector('.insight-title').textContent;
-            showToast(`查看详情: ${title}`);
-        });
-    });
-
-    // 指标卡片点击
-    const metricCards = document.querySelectorAll('.metric-card');
-    metricCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const label = this.querySelector('.metric-label').textContent;
-            showToast(`查看 ${label} 趋势图`);
         });
     });
 
@@ -1347,19 +1585,9 @@ document.addEventListener('DOMContentLoaded', function() {
         requestAnimationFrame(update);
     }
 
-    setTimeout(() => {
-        const metricValues = document.querySelectorAll('.metric-value');
-        metricValues.forEach(el => {
-            const text = el.textContent;
-            if (text.includes('¥')) {
-                const num = parseInt(text.replace(/[¥,]/g, ''));
-                animateNumber(el, num, '¥');
-            }
-        });
-    }, 500);
+    // ==================== 初始化 ====================
+    refreshFunnelSection();
 
-    const datePicker = document.querySelector('.date-picker');
-    if (datePicker) datePicker.addEventListener('click', () => showToast('日期选择功能开发中...'));
     const btnRecommend = document.querySelector('.btn-recommend');
     if (btnRecommend) btnRecommend.addEventListener('click', () => showToast('经营工具推荐功能开发中...'));
     const bellIcon = document.querySelector('.user-info .fa-bell');
@@ -1367,56 +1595,4 @@ document.addEventListener('DOMContentLoaded', function() {
     const avatar = document.querySelector('.avatar');
     if (avatar) avatar.addEventListener('click', () => showToast('用户中心功能开发中...'));
 
-    // ==================== 初始化 ====================
-    refreshFunnelSection();
-
-    // ==================== 趋势图交互（hover放大 + click锁定） ====================
-    const trendPanel = document.getElementById('trend-chart-panel');
-    const funnelMainArea = document.getElementById('funnel-main-area');
-    let trendLocked = false; // 趋势图是否锁定展开
-
-    if (trendPanel && funnelMainArea) {
-        // 鼠标进入趋势图
-        trendPanel.addEventListener('mouseenter', function() {
-            if (!trendLocked) {
-                trendPanel.classList.add('hover-expand');
-                funnelMainArea.classList.add('trend-expanded');
-                // 重新渲染折线图以适配新尺寸
-                setTimeout(() => renderTrendChart(), 50);
-            }
-        });
-
-        // 鼠标离开趋势图
-        trendPanel.addEventListener('mouseleave', function() {
-            if (!trendLocked) {
-                trendPanel.classList.remove('hover-expand');
-                funnelMainArea.classList.remove('trend-expanded');
-                // 重新渲染折线图以适配新尺寸
-                setTimeout(() => renderTrendChart(), 50);
-            }
-        });
-
-        // 点击趋势图
-        trendPanel.addEventListener('click', function(e) {
-            // 忽略控件点击（配置按钮、日期选择等）
-            if (e.target.closest('.trend-config-btn') || e.target.closest('.trend-date-range') || e.target.closest('.trend-dot')) {
-                return;
-            }
-
-            if (trendLocked) {
-                // 已锁定，点击解锁恢复初始状态
-                trendLocked = false;
-                trendPanel.classList.remove('locked-expand');
-                funnelMainArea.classList.remove('trend-expanded');
-                setTimeout(() => renderTrendChart(), 50);
-            } else {
-                // 未锁定，点击锁定为展开状态
-                trendLocked = true;
-                trendPanel.classList.remove('hover-expand');
-                trendPanel.classList.add('locked-expand');
-                funnelMainArea.classList.add('trend-expanded');
-                setTimeout(() => renderTrendChart(), 50);
-            }
-        });
-    }
 });
