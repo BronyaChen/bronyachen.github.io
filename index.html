@@ -132,7 +132,7 @@
 
             <!-- 主内容区 -->
             <main class="content">
-                <!-- 面包屑和筛选 -->
+                <!-- 面包屑 + 顶层筛选 -->
                 <div class="content-header">
                     <div class="breadcrumb">
                         <span>企微经营</span>
@@ -141,129 +141,52 @@
                         <i class="fas fa-chevron-right"></i>
                         <span class="current">营销洞察</span>
                     </div>
-                    <div class="header-actions">
-                        <div class="date-filter">
-                            <button class="date-btn" data-range="yesterday">昨日</button>
-                            <button class="date-btn active" data-range="7days">近7天</button>
-                            <button class="date-btn" data-range="30days">近30天</button>
-                            <div class="date-picker">
-                                <i class="fas fa-calendar"></i>
-                                <span>2025-07-01 ~ 2025-07-07</span>
+                    <div class="top-filter-bar">
+                        <!-- 曝光时段 -->
+                        <div class="top-filter-item">
+                            <div class="top-filter-label">
+                                <span>曝光时段</span>
+                                <span class="filter-help-icon" data-tooltip="在此时间范围内有多少用户被曝光了您的广告">
+                                    <i class="fas fa-question-circle"></i>
+                                </span>
                             </div>
-                            <div class="industry-select">
-                                <span>行业: 商家</span>
-                                <i class="fas fa-chevron-down"></i>
+                            <div class="funnel-time-picker" id="exposure-time-picker">
+                                <div class="funnel-time-picker-label">
+                                    <i class="fas fa-calendar"></i>
+                                    <span id="exposure-time-label">2025-06-18 ~ 2025-06-24</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="data-source">
-                            <span>数据来源</span>
-                            <button class="btn-refresh">
-                                <i class="fas fa-sync-alt"></i>
-                                刷新数据
-                            </button>
+                        <!-- 转化周期 -->
+                        <div class="top-filter-item">
+                            <div class="top-filter-label">
+                                <span>转化周期</span>
+                                <span class="filter-help-icon" data-tooltip="在此时间范围内，有多少被曝光了广告的用户发生了转化行为">
+                                    <i class="fas fa-question-circle"></i>
+                                </span>
+                            </div>
+                            <div class="conversion-period-selector" id="conversion-period-selector">
+                                <button class="period-btn" data-days="7">7天</button>
+                                <button class="period-btn" data-days="14">14天</button>
+                                <button class="period-btn active" data-days="30">30天</button>
+                                <button class="period-btn" data-days="custom">自定义</button>
+                                <div class="period-custom-input" id="period-custom-input" style="display:none;">
+                                    <input type="number" id="period-custom-days" placeholder="输入天数" min="1" max="90">
+                                    <span class="period-unit">天</span>
+                                </div>
+                                <span class="period-error" id="period-error"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- AI 洞察 -->
-                <section class="ai-insights">
-                    <div class="section-title">
-                        <i class="fas fa-robot"></i>
-                        <span>AI 洞察</span>
-                        <span class="subtitle">基于近 7 天投放数据自动生成</span>
-                    </div>
-                    <div class="insights-grid">
-                        <div class="insight-card positive">
-                            <div class="insight-header">
-                                <span class="insight-tag tag-positive">机会</span>
-                                <span class="insight-title">朋友圈版位 CTR 领先，加粉成本最优</span>
-                            </div>
-                            <p class="insight-desc">朋友圈 CTR 8.0%，高于均值 7.0%。建议对该版位追加预算，尤其真人出镜素材表现突出。</p>
-                        </div>
-                        <div class="insight-card warning">
-                            <div class="insight-header">
-                                <span class="insight-tag tag-warning">关注</span>
-                                <span class="insight-title">开口→留资环节转化率偏低</span>
-                            </div>
-                            <p class="insight-desc">整体留资率 40%，但「优惠汇」版位仅 34.2%。建议优化该渠道话术引导策略或调整人群定向。</p>
-                        </div>
-                        <div class="insight-card negative">
-                            <div class="insight-header">
-                                <span class="insight-tag tag-negative">预警</span>
-                                <span class="insight-title">到店率环比下降 2.1pp</span>
-                            </div>
-                            <p class="insight-desc">留资→到店转化链路断裂，到店率环比下降 17.4%。建议排查留资后跟进时效，启用 SOP 自动提醒。</p>
-                        </div>
-                        <div class="insight-card positive">
-                            <div class="insight-header">
-                                <span class="insight-tag tag-positive">机会</span>
-                                <span class="insight-title">TOP3 营销单元贡献 55% 加粉量</span>
-                            </div>
-                            <p class="insight-desc">头部营销单元转化效率显著领先，建议复制其素材策略至中低效营销单元，提升整体 ROI。</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 核心指标 -->
-                <section class="core-metrics">
-                    <div class="section-title">核心指标</div>
-                    <div class="metrics-grid">
-                        <div class="metric-card">
-                            <div class="metric-label">总花费</div>
-                            <div class="metric-value">¥128,500</div>
-                            <div class="metric-trend trend-up">
-                                <i class="fas fa-arrow-up"></i>
-                                <span>较上周 +12.3%</span>
-                            </div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">曝光成本</div>
-                            <div class="metric-value">¥45.6</div>
-                            <div class="metric-trend trend-up">
-                                <i class="fas fa-arrow-up"></i>
-                                <span>较上周 +3.2%</span>
-                            </div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">点击成本</div>
-                            <div class="metric-value">¥2.8</div>
-                            <div class="metric-trend trend-down">
-                                <i class="fas fa-arrow-down"></i>
-                                <span>较上周 -5.1%</span>
-                            </div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">加粉成本</div>
-                            <div class="metric-value">¥12.8</div>
-                            <div class="metric-trend trend-down">
-                                <i class="fas fa-arrow-down"></i>
-                                <span>较上周 -8.6%</span>
-                            </div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">开口成本</div>
-                            <div class="metric-value">¥30.5</div>
-                            <div class="metric-trend trend-down">
-                                <i class="fas fa-arrow-down"></i>
-                                <span>较上周 -3.2%</span>
-                            </div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">整体 ROI</div>
-                            <div class="metric-value">3.2x</div>
-                            <div class="metric-trend trend-up">
-                                <i class="fas fa-arrow-up"></i>
-                                <span>较上周 +0.3</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
 
                 <!-- 营销转化漏斗 -->
                 <section class="funnel-section" id="funnel-section">
                     <div class="funnel-header">
                         <div class="funnel-header-left">
-                            <div class="section-title">营销转化漏斗</div>
+                            <div style="display:flex;align-items:center;gap:0;">
+                                <div class="section-title" style="margin-bottom:0;">营销转化漏斗</div>
+                            </div>
                             <div class="funnel-summary">
                                 <div class="funnel-summary-item">
                                     <span>整体转化率</span>
@@ -289,16 +212,16 @@
                                         <span>选择查看主体</span>
                                         <span class="entity-hint">选择行业自动勾选对应主体</span>
                                     </div>
+                                    <div class="entity-industry-label" style="padding: 8px 12px 4px;">主体</div>
+                                    <div class="entity-dropdown-list" id="entity-dropdown-list">
+                                        <!-- JS 动态生成 -->
+                                    </div>
+                                    <div class="entity-dropdown-divider"></div>
                                     <div class="entity-dropdown-industry" id="entity-dropdown-industry">
                                         <div class="entity-industry-label">行业</div>
                                         <div class="entity-industry-options" id="entity-industry-options">
                                             <!-- JS 动态生成 -->
                                         </div>
-                                    </div>
-                                    <div class="entity-dropdown-divider"></div>
-                                    <div class="entity-industry-label" style="padding: 0 12px 4px;">主体</div>
-                                    <div class="entity-dropdown-list" id="entity-dropdown-list">
-                                        <!-- JS 动态生成 -->
                                     </div>
                                     <div class="entity-dropdown-footer">
                                         <button class="entity-btn entity-btn-cancel" id="entity-cancel-btn">取消</button>
@@ -383,19 +306,20 @@
 
                     <!-- 漏斗图区域 -->
                     <div class="funnel-body">
-                        <div class="funnel-main-area" id="funnel-main-area">
-                            <!-- 客户漏斗图 -->
-                            <div class="funnel-customer funnel-panel" id="funnel-customer">
+                        <!-- 第一行：数量漏斗 + 转化率趋势 -->
+                        <div class="funnel-row">
+                            <!-- 客户数量漏斗 -->
+                            <div class="funnel-col-left">
                                 <div class="funnel-panel-label">
                                     <span class="label-dot customer-dot"></span>
-                                    <span>客户漏斗</span>
+                                    <span>客户数量漏斗</span>
                                 </div>
                                 <div class="funnel-chart" id="customer-funnel-chart">
                                     <!-- JS 动态生成 -->
                                 </div>
                             </div>
                             <!-- 转化率变化趋势图 -->
-                            <div class="trend-chart-panel funnel-panel" id="trend-chart-panel">
+                            <div class="funnel-col-right" id="quantity-trend-panel">
                                 <div class="trend-chart-header">
                                     <div class="trend-chart-title">
                                         <span class="label-dot trend-dot"></span>
@@ -403,57 +327,42 @@
                                         <span class="trend-rate-label" id="trend-rate-label">下单数/点击数</span>
                                     </div>
                                     <div class="trend-chart-controls">
-                                        <div class="trend-date-range" id="trend-date-range">
-                                            <i class="fas fa-calendar"></i>
-                                            <span id="trend-date-label">2025-05-25 ~ 2025-06-24</span>
-                                        </div>
                                         <button class="trend-config-btn" id="trend-config-btn" title="配置转化率计算方式">
                                             <i class="fas fa-cog"></i>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="trend-chart-body" id="trend-chart-body">
+                                <div class="trend-chart-body" id="quantity-trend-chart-body">
                                     <!-- JS 动态渲染 SVG 折线图 -->
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- 画像区域 -->
-                    <div class="funnel-portrait" id="funnel-portrait">
-                        <div class="portrait-header">
-                            <div class="portrait-header-left">
-                                <span class="portrait-stage-label" id="portrait-stage-label">下单客户画像</span>
-                                <span class="portrait-count" id="portrait-count">共 800 人</span>
-                            </div>
-                            <div class="portrait-config" id="portrait-config">
-                                <button class="portrait-config-btn" id="portrait-config-trigger" title="配置画像展示维度">
-                                    <i class="fas fa-sliders-h"></i>
-                                    <span>画像配置</span>
-                                </button>
-                                <div class="portrait-config-dropdown" id="portrait-config-dropdown">
-                                    <div class="portrait-config-header">选择展示画像（最多4个）</div>
-                                    <div class="portrait-config-list" id="portrait-config-list">
-                                        <!-- JS 动态生成 -->
-                                    </div>
-                                    <div class="portrait-config-footer">
-                                        <button class="entity-btn entity-btn-cancel" id="portrait-cancel-btn">取消</button>
-                                        <button class="entity-btn entity-btn-confirm" id="portrait-confirm-btn">确定</button>
-                                    </div>
+                        <!-- 第二行：消耗漏斗 + 消耗趋势 -->
+                        <div class="funnel-row">
+                            <!-- 客户消耗漏斗 -->
+                            <div class="funnel-col-left">
+                                <div class="funnel-panel-label">
+                                    <span class="label-dot customer-dot" style="background: var(--success);"></span>
+                                    <span>客户消耗漏斗</span>
+                                </div>
+                                <div class="funnel-chart" id="cost-funnel-chart">
+                                    <!-- JS 动态生成 -->
                                 </div>
                             </div>
-                        </div>
-                        <div class="portrait-conclusion" id="portrait-conclusion">
-                            <div class="portrait-conclusion-header">
-                                <i class="fas fa-lightbulb"></i>
-                                <span>画像结论</span>
+                            <!-- 消耗变化趋势图 -->
+                            <div class="funnel-col-right" id="cost-trend-panel">
+                                <div class="trend-chart-header">
+                                    <div class="trend-chart-title">
+                                        <span class="label-dot trend-dot" style="background: var(--success);"></span>
+                                        <span>总消耗变化趋势图</span>
+                                        <span class="trend-rate-label" id="cost-trend-rate-label" style="background: rgba(34,197,94,0.1); color: #16a34a;">曝光总消耗</span>
+                                    </div>
+                                </div>
+                                <div class="trend-chart-body" id="cost-trend-chart-body">
+                                    <!-- JS 动态渲染 SVG 折线图 -->
+                                </div>
                             </div>
-                            <div class="portrait-conclusion-body" id="portrait-conclusion-body">
-                                <!-- JS 动态生成 -->
-                            </div>
-                        </div>
-                        <div class="portrait-grid" id="portrait-grid">
-                            <!-- JS 动态生成 -->
                         </div>
                     </div>
 
